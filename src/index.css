@@ -30,6 +30,17 @@ body {
   min-height: 100vh;
 }
 
+svg {
+  fill: ghostwhite;
+  stroke: black;
+}
+
+#hej {
+  fill: #646cff;
+}
+
+
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
