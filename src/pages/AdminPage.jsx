@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function AdminPage(excerciseToEdit, mutateExcercise ) {
-    const [foundExcercise, setFoundExcercise] = useState(true);
+    const [foundExcercise, setFoundExcercise] = useState(false);
   const blankExcercise = { id: null, name: "", amount: null, rarity: "", price: null };
 
     const [excercise, setExcercise] = useState({ ...excerciseToEdit });
@@ -34,7 +34,7 @@ function AdminPage(excerciseToEdit, mutateExcercise ) {
             id="id"
             type="number"
             readOnly
-            placeholder="id"
+            placeholder={excercise.id}
             value={excercise.id}
           /></div>
           <div className="formcontent">
@@ -87,7 +87,9 @@ function AdminPage(excerciseToEdit, mutateExcercise ) {
             <div>
             <p>No excercise found yet</p>
             <p>Insert search function here</p>
-            <button onClick={() =>{setFoundExcercise(true); setExcercise.id(1)}}>true</button>
+            <button onClick={() =>{setFoundExcercise(true); setExcercise( {id : 1, name: "Armbøjning", description  : "bøj dine arme", mediaPath : "youtube.com", intensity : 3})}}>Edit armbøjning</button>
+            <button onClick={() =>{setFoundExcercise(true); setExcercise( {id : 2, name: "Squat", description  : "bøj dine ben", mediaPath : "youtube.com", intensity : 5})}}>Edit squat</button>
+            <button onClick={() => {setFoundExcercise(true); setExcercise(blankExcercise) }}>Create Excercise</button>
             </div>
           )}
         
