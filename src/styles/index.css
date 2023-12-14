@@ -75,6 +75,7 @@ button:focus-visible {
   padding: 10px;
   display: flex;
   justify-content: flex-start;
+  max-height: 50px;
 }
 
 #nav-items a {
@@ -93,4 +94,9 @@ button:focus-visible {
 
 #nav-items a.active:hover {
   color: white;
+}
+
+.loginLock image{
+  width: 10px;
+  height: 10px;
 }

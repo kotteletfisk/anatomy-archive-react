@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
+
 function MainLayout() {
   const location = useLocation();
 
@@ -28,6 +29,7 @@ function MainLayout() {
         <div id="nav-items">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
+          <NavLink to="/AdminPage" className={'loginLock'}><img src="src\assets\loginLock.png" width={20} height={20}/></NavLink>
         </div>
       </div>
 
