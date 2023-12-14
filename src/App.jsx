@@ -12,6 +12,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route path="/test" element={<Test />} />
+        <Route path='/search' element={<h1>TEST</h1>}/>
       </Route>
     )
   );

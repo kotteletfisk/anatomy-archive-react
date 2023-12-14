@@ -20,6 +20,7 @@ function MainLayout() {
         <div id="nav-items">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
+          <NavLink to="/search">Search</NavLink>
         </div>
       </div>
 
