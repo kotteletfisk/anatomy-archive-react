@@ -78,9 +78,8 @@ function AdminPage(excerciseToEdit, mutateExcercise ) {
           <button className="btn btn-primary">Submit</button>
           <button
             className="btn btn-danger"
-            onClick={() => setExcercise(blankExcercise)}
-          >
-            Reset
+            onClick={() => {setFoundExcercise(false); setExcercise(blankExcercise)}}
+          >Cancel
           </button>
         </form>
             </div>
@@ -88,6 +87,7 @@ function AdminPage(excerciseToEdit, mutateExcercise ) {
             <div>
             <p>No excercise found yet</p>
             <p>Insert search function here</p>
+            <button onClick={() =>{setFoundExcercise(true); setExcercise.id(1)}}>true</button>
             </div>
           )}
         
