@@ -14,7 +14,7 @@ function MainLayout() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Main Layout</h1>
+      <h1 style={{ textAlign: "center" }}>Anatomy Archive</h1>
 
       <div id="nav-bar">
         <div id="nav-items">
