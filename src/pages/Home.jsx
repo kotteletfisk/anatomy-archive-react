@@ -3,12 +3,12 @@ function Home() {
     <div>
       <h1>Home</h1>
 
-      <p>
+      <i>
         " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto,
         voluptatibus non! Minus, expedita! Aliquam illo, odio repellat
         temporibus, voluptates nobis sunt minus dolore a delectus assumenda
         minima, corrupti earum consequatur " - Founders of Anatomy Archive
-      </p>
+      </i>
 
       <h3>Weekly status : </h3>
 
