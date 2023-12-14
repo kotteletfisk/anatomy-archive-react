@@ -22,6 +22,7 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/AdminPage" className={'loginLock'}><img src="src\assets\loginLock.png" width={20} height={20}/></NavLink>
+          <NavLink to="/search">Search</NavLink>
         </div>
       </div>
 
