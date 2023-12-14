@@ -29,11 +29,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  
 }
 
 h1 {
@@ -55,7 +51,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 button:focus,
@@ -75,9 +71,9 @@ input {
   transition: border-color 0.25s;
   margin: 7px;
 }
-input:active, 
+input:active,
 input:focus {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 ul {
@@ -108,6 +104,8 @@ th {
 }
 
 #content {
+  justify-content: center;
+  align-items: center;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -139,7 +137,36 @@ th {
   color: white;
 }
 
+<<<<<<< HEAD
 .loginLock image{
   width: 10px;
   height: 10px;
+=======
+/* Error page */
+#error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  font-size: 28px;
+}
+
+#error-page h1 {
+  font-size: 48px;
+}
+
+#error-page i,
+p {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+#error-page a {
+  color: #646cff;
+  text-decoration: none;
+  font-size: 20px;
+>>>>>>> c4377b301fc8bbdc564daa684260d24b17eb2616
 }
