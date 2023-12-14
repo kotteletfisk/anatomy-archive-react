@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import "./styles/App.css";
 import MainLayout from "./layouts/MainLayout";
 
 function App() {
