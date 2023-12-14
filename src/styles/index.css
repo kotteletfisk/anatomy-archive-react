@@ -29,11 +29,6 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -55,7 +50,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 button:focus,
@@ -75,9 +70,9 @@ input {
   transition: border-color 0.25s;
   margin: 7px;
 }
-input:active, 
+input:active,
 input:focus {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 ul {
