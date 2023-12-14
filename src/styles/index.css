@@ -137,11 +137,10 @@ th {
   color: white;
 }
 
-<<<<<<< HEAD
-.loginLock image{
+.loginLock image { 
   width: 10px;
   height: 10px;
-=======
+}
 /* Error page */
 #error-page {
   display: flex;
@@ -168,5 +167,4 @@ p {
   color: #646cff;
   text-decoration: none;
   font-size: 20px;
->>>>>>> c4377b301fc8bbdc564daa684260d24b17eb2616
 }
