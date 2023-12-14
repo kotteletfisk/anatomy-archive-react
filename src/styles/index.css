@@ -51,7 +51,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 button:focus,
@@ -71,9 +71,9 @@ input {
   transition: border-color 0.25s;
   margin: 7px;
 }
-input:active, 
+input:active,
 input:focus {
-  border-color:  #4200dd;
+  border-color: #4200dd;
 }
 
 ul {
@@ -134,4 +134,32 @@ th {
 
 #nav-items a.active:hover {
   color: white;
+}
+
+/* Error page */
+#error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  font-size: 28px;
+}
+
+#error-page h1 {
+  font-size: 48px;
+}
+
+#error-page i,
+p {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+#error-page a {
+  color: #646cff;
+  text-decoration: none;
+  font-size: 20px;
 }

@@ -6,11 +6,12 @@ import {
 } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Test from "./pages/Test";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path="/test" element={<Test />} />
       </Route>
     )
