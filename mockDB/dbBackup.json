@@ -1,0 +1,139 @@
+
+{
+    "MuscleGroup": [
+      {
+        "id": 1,
+        "name": "Chest",
+        "mediaPath": null,
+        "description": "Chest muscles"
+      },
+      {
+        "id": 2,
+        "name": "Back",
+        "mediaPath": null,
+        "description": "Back muscles"
+      },
+      {
+        "id": 3,
+        "name": "Legs",
+        "mediaPath": null,
+        "description": "Leg muscles"
+      },
+      {
+        "id": 4,
+        "name": "Arms",
+        "mediaPath": null,
+        "description": "Arm muscles"
+      },
+      {
+        "id": 5,
+        "name": "Shoulders",
+        "mediaPath": null,
+        "description": "Shoulder muscles"
+      },
+      {
+        "id": 6,
+        "name": "Abdomen",
+        "mediaPath": null,
+        "description": "Abdominal muscles"
+      }
+    ],
+    "Muscle": [
+      {
+        "id": 1,
+        "name": "Pectoralis major",
+        "mediaPath": null,
+        "description": "Chest muscle"
+      },
+      {
+        "id": 2,
+        "name": "Latissimus dorsi",
+        "mediaPath": null,
+        "description": "Back muscle"
+      },
+      {
+        "id": 3,
+        "name": "Quadriceps femoris",
+        "mediaPath": null,
+        "description": "Leg muscle"
+      }
+    ],
+    "Excercise": [
+      {
+        "id": 1,
+        "name": "Squat",
+        "description": "Squat down below the knees",
+        "mediaPath": null,
+        "intensity": 5
+      },
+      {
+        "id": 2,
+        "name": "Deadlift",
+        "description": "The dealift exercise",
+        "mediaPath": null,
+        "intensity": 5
+      },
+      {
+        "id": 3,
+        "name": "Bench press",
+        "description": "The bench press exercise",
+        "mediaPath": null,
+        "intensity": 5
+      },
+      {
+        "id": 4,
+        "name": "Overhead press",
+        "description": "The overhead press exercise",
+        "mediaPath": null,
+        "intensity": 5
+      },
+      {
+        "id": 5,
+        "name": "Barbell row",
+        "description": "The barbell row exercise",
+        "mediaPath": null,
+        "intensity": 5
+      },
+      {
+        "id": 6,
+        "name": "Pull up",
+        "description": "The pull up exercise",
+        "mediaPath": null,
+        "intensity": 5
+      }
+    ],
+    "ExcerciseType": [
+      {
+        "id": 1,
+        "name": "WEIGHTLIFTING"
+      },
+      {
+        "id": 2,
+        "name": "CALISTHENIC"
+      },
+      {
+        "id": 3,
+        "name": "CARDIO"
+      }
+    ],
+    "Equipment": [
+      {
+        "id": 1,
+        "name": "Barbell",
+        "mediaPath": null,
+        "description": "Barbell description"
+      },
+      {
+        "id": 2,
+        "name": "Dumbells",
+        "mediaPath": null,
+        "description": "Dumbells description"
+      },
+      {
+        "id": 3,
+        "name": "Pull-up bar",
+        "mediaPath": null,
+        "description": "Pull-up bar description"
+      }
+    ]
+  }
