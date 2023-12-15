@@ -13,6 +13,9 @@ function ErrorPage() {
     <div id="error-page">
       <h1>Oops!</h1>
       <h3>Something went wrong</h3>
+
+      <img src="src/assets/awkward-kid.gif" alt="error" />
+
       <p>You must be smarter then us, this page has not been created yet.</p>
 
       <i style={{ color: "red" }}>

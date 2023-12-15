@@ -115,8 +115,6 @@ th {
 #nav-bar {
   background-color: #292929;
   padding: 10px;
-  display: flex;
-  justify-content: flex-start;
   max-height: 50px;
 }
 
@@ -124,6 +122,11 @@ th {
   color: white;
   text-decoration: none;
   margin-right: 20px;
+}
+
+#nav-items a:last-child {
+  float: right;
+  margin-right: 10px;
 }
 
 #nav-items a:hover {
@@ -138,10 +141,6 @@ th {
   color: white;
 }
 
-.loginLock image{
-  width: 10px;
-  height: 10px;
-}
 /* Error page */
 #error-page {
   display: flex;
@@ -168,4 +167,10 @@ p {
   color: #646cff;
   text-decoration: none;
   font-size: 20px;
+}
+
+#error-page img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
 }
