@@ -14,11 +14,28 @@ function Home() {
       </i>
 
       <WeeklyStatus />
-      <WeeklyStatus />
-      <WeeklyStatus />
-      <WeeklyStatus />
-      <WeeklyStatus />
-      <WeeklyStatus />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <p>Delete later just for test of scrolling</p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
+      <p> scroll down to see more </p>
     </div>
   );
 }
