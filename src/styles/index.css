@@ -173,6 +173,13 @@ p {
   margin-bottom: 10px;
 }
 
+#homepage-quot {
+  display: flex;
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 #wrapper-status {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
