@@ -172,3 +172,19 @@ p {
   height: 200px;
   margin-bottom: 10px;
 }
+
+#wrapper-status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 870px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#wrapper-status div {
+  border: #000000 3px solid;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
