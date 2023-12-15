@@ -1,3 +1,5 @@
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +13,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* variables */
+  --color-foreground: #292929;
+  --color-active: #535bf2;
+  --border-radius: 8px;
 }
 
 #root {
@@ -29,6 +36,7 @@ a:hover {
 }
 
 body {
+
 }
 
 h1 {
@@ -48,6 +56,7 @@ button {
   background-color: #350749;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: blanchedalmond;
 }
 button:hover {
   border-color: #4200dd;
@@ -58,6 +67,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 input {
+  text-align: center;
   display: list-item;
   border-radius: 8px;
   border: 1px solid #1a1a1a;
@@ -102,6 +112,45 @@ th {
   margin: 10px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: var(--color-foreground);
+  transition: 0.3s;
+  margin: 2em;
+  padding: 3%;
+  border-radius: 8px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-active {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: var(--color-active);
+  transition: 0.3s;
+  margin: 2em;
+  padding: 3%;
+  border-radius: 8px;
+}
+
 #content {
   justify-content: center;
   align-items: center;
@@ -114,6 +163,7 @@ th {
   background-color: #292929;
   padding: 10px;
   max-height: 50px;
+  border-radius: 8px;
 }
 
 .sticky {
@@ -151,6 +201,14 @@ th {
 #nav-items a.active:hover {
   color: white;
 }
+
+/* Search bar */
+#search-bar {
+  align-items: center;
+  margin: 10px;
+  width: 30em;
+}
+
 
 /* Error page */
 #error-page {

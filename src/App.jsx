@@ -8,15 +8,15 @@ import MainLayout from "./layouts/MainLayout";
 import Test from "./pages/Test";
 import AdminPage from "./pages/AdminPage";
 import ErrorPage from "./pages/ErrorPage";
+import Search from "./components/Search";
 
 function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path="/test" element={<Test />} />
-        <Route path="/search" element={<h1>TEST</h1>} />
+        <Route path="/search" element={<Search />} />
         <Route path="/admin-page" element={<AdminPage />} />
-        <Route path="/search" element={<h1>TEST</h1>} />
       </Route>
     )
   );
