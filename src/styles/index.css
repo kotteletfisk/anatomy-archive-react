@@ -116,6 +116,19 @@ th {
   max-height: 50px;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+
+.sticky + #content {
+  /* this makes scrolling smoother */
+  padding-top: 50px;
+}
+
 #nav-items a {
   color: white;
   text-decoration: none;

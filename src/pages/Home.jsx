@@ -14,6 +14,11 @@ function Home() {
       </i>
 
       <WeeklyStatus />
+      <WeeklyStatus />
+      <WeeklyStatus />
+      <WeeklyStatus />
+      <WeeklyStatus />
+      <WeeklyStatus />
     </div>
   );
 }
