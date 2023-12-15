@@ -29,7 +29,7 @@ a:hover {
 }
 
 body {
-  
+
 }
 
 h1 {
@@ -49,6 +49,7 @@ button {
   background-color: #350749;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: blanchedalmond;
 }
 button:hover {
   border-color: #4200dd;
