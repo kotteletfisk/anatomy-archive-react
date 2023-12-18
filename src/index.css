@@ -32,12 +32,16 @@ body {
 
 svg {
   fill: ghostwhite;
-  stroke: black;
+  color: ghostwhite;
+  stroke: ghostwhite;
+  background-color: #f9f9f9;
 }
 
-#hej {
+
+
+/* #hej {
   fill: #646cff;
-}
+} */
 
 
 
