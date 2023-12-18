@@ -1,7 +1,20 @@
+import { useEffect, useState } from "react";
 import DisplayResultsSearch from "./DisplayResultsSearch";
 
 function SearchResults({ results }) {
   /* results = []; */
+
+  const [loadDots, setLoadDots] = useState("");
+
+  useEffect(() => {
+    if (loadDots.length < 7) {
+      setTimeout(() => {
+        setLoadDots(loadDots + " .");
+      }, 1000);
+    } else {
+      setLoadDots("");
+    }
+  }, [loadDots]);
 
   return (
     <div className="container">
@@ -9,7 +22,7 @@ function SearchResults({ results }) {
 
       {results.length === 0 ? (
         <div>
-          <p>No results . . .</p>
+          <p>No results {loadDots}</p>
         </div>
       ) : (
         <DisplayResultsSearch data={results} />
