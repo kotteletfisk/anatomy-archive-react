@@ -101,6 +101,7 @@ function fetchData(url, callback, method, body) {
     mutateExercise,
     getExercises,
     getExerciseById,
-    deleteExerciseById
+    deleteExerciseById,
+    fetchData
   };
   

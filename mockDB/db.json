@@ -1,5 +1,5 @@
 {
-  "MuscleGroup": [
+  "muscleGroup": [
     {
       "id": 1,
       "name": "Chest",
@@ -37,7 +37,7 @@
       "description": "Abdominal muscles"
     }
   ],
-  "Muscle": [
+  "muscle": [
     {
       "id": 1,
       "name": "Pectoralis major",
@@ -115,7 +115,7 @@
       "name": "CARDIO"
     }
   ],
-  "Equipment": [
+  "equipment": [
     {
       "id": 1,
       "name": "Barbell",
@@ -135,7 +135,7 @@
       "description": "Pull-up bar description"
     }
   ],
-  "User": [
+  "user": [
     {
       "id": 1,
       "username": "admin",
