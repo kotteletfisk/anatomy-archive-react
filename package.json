@@ -11,6 +11,7 @@
     "jsonserver": "json-server --watch mockDB/db.json --port 3000 --host 127.0.0.1"
   },
   "dependencies": {
+    "json-server": "^0.17.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
