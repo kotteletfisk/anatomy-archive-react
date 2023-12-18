@@ -164,16 +164,13 @@ th {
 }
 
 .sticky {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 7.9%;
-  right: 7.9%;
 }
 
 .sticky + #content {
   /* this makes scrolling smoother */
   max-width: 1280px;
-  padding-top: 50px;
 }
 
 #nav-items a {
