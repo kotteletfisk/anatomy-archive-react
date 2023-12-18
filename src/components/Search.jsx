@@ -14,8 +14,12 @@ function Search() {
 
     useEffect(() => {
         // Update results when active changes
-        // let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
-        let url = MOCK_URL;
+        let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
+        // let url = MOCK_URL;
+        if (searchInput === "") {
+            setResults([]);
+            return;
+        }
         facade.fetchData(url, (data) => setResults(data), "GET");
     }, [active, searchInput]);
 

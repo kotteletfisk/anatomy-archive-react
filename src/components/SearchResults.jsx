@@ -16,8 +16,6 @@ function SearchResults({ results }) {
 
   return (
     <div className="container-search-output">
-      <h3 style={{ textAlign: "center" }}>Search Results</h3>
-
       {results.length === 0 ? (
         <div>
           <p style={{ textAlign: "center" }}>No results {loadDots}</p>
