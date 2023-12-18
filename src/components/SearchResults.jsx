@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import DisplayResultsSearch from "./DisplayResultsSearch";
 
 function SearchResults({ results }) {
-  /* results = []; */
-
   const [loadDots, setLoadDots] = useState("");
 
   useEffect(() => {
