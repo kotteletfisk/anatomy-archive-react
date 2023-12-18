@@ -13,8 +13,6 @@ function DisplayResultsSearch({ data }) {
     }
   }
 
-  console.table(data);
-
   return (
     <div>
       {data.map((item) => (
