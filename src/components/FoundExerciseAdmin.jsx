@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from "react";
-function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit}) {
-    
-    const [excercise, setExcercise] = useState({ ...excerciseToEdit });
-  
-    useEffect(() => {
-      setExcercise(excerciseToEdit);
-    }, [excerciseToEdit]);
-  
-    function handleChange(event) {
-      const value = event.target.value;
-      const name = event.target.id;
-      setExcercise({ ...excercise, [name]: value });
+
+function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit }) {
+  const [exercise, setExercise] = useState({ ...blankExercise });
+
+  useEffect(() => {
+    // Check if exerciseToEdit is not empty before setting the state
+    if (exerciseToEdit && Object.keys(exerciseToEdit).length > 0) {
+      setExercise(exerciseToEdit);
+    } else {
+      // Reset the state to blankexercise if exerciseToEdit is empty
+      setExercise(blankExercise);
     }
-  
-      function handleSubmit(event) {
-          event.preventDefault();
-          console.log("submit", excercise)
-      }
+  }, [exerciseToEdit, blankExercise]);
+
+  function handleChange(event) {
+    const value = event.target.value;
+    const name = event.target.id;
+    setExercise({ ...exercise, [name]: value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("submit", exercise);
+  }
+
   return (
     <div>
-      <form className="excerciseForm" onSubmit={handleSubmit}>
+      <form className="exerciseForm" onSubmit={handleSubmit}>
         <div className="formcontent">
           <label className="formlabel" htmlFor="id">
             Id
@@ -29,8 +36,8 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
             id="id"
             type="number"
             readOnly
-            placeholder={excercise.id}
-            value={excercise.id}
+            placeholder={exercise.id}
+            value={exercise.id}
           />
         </div>
         <div className="formcontent">
@@ -42,7 +49,7 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
             id="name"
             type="text"
             placeholder="name"
-            value={excercise.name}
+            value={exercise.name}
             onChange={handleChange}
           />
         </div>
@@ -55,7 +62,7 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
             id="description"
             type="text"
             placeholder="description"
-            value={excercise.description}
+            value={exercise.description}
             onChange={handleChange}
           />
         </div>
@@ -68,7 +75,7 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
             id="mediaPath"
             type="text"
             placeholder="mediaPath"
-            value={excercise.mediaPath}
+            value={exercise.mediaPath}
             onChange={handleChange}
           />
         </div>
@@ -83,7 +90,7 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
             min={1}
             max={10}
             placeholder="intensity"
-            value={excercise.intensity}
+            value={exercise.intensity}
             onChange={handleChange}
           />
         </div>
@@ -91,8 +98,8 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
         <button
           className="btn btn-danger"
           onClick={() => {
-            setFoundExcercise(false);
-            setExcercise(blankExcercise);
+            setFoundexercise(false);
+            setExercise(blankexercise);
           }}
         >
           Cancel
@@ -102,4 +109,15 @@ function FoundExcerciseAdmin({setFoundExcercise, blankExcercise, excerciseToEdit
   );
 }
 
-export default FoundExcerciseAdmin;
+export default FoundExerciseAdmin;
+
+
+
+
+
+
+
+
+
+
+  
