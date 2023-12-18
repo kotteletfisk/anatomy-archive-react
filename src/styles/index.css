@@ -134,6 +134,14 @@ th {
   border-radius: 8px;
 }
 
+.container-search-output {
+  /* make container where the max width can be 700px */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

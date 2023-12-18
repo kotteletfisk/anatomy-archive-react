@@ -15,12 +15,12 @@ function SearchResults({ results }) {
   }, [loadDots]);
 
   return (
-    <div className="container">
-      <h3>Results</h3>
+    <div className="container-search-output">
+      <h3 style={{ textAlign: "center" }}>Search Results</h3>
 
       {results.length === 0 ? (
         <div>
-          <p>No results {loadDots}</p>
+          <p style={{ textAlign: "center" }}>No results {loadDots}</p>
         </div>
       ) : (
         <DisplayResultsSearch data={results} />
