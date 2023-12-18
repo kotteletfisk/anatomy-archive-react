@@ -17,25 +17,6 @@ function Home() {
 
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <p>Delete later just for test of scrolling</p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
-      <p> scroll down to see more </p>
     </div>
   );
 }

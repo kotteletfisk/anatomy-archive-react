@@ -57,7 +57,7 @@
       "description": "Leg muscle"
     }
   ],
-  "Excercise": [
+  "exercise": [
     {
       "id": 1,
       "name": "Squat",
@@ -101,7 +101,7 @@
       "intensity": 5
     }
   ],
-  "ExcerciseType": [
+  "exerciseType": [
     {
       "id": 1,
       "name": "WEIGHTLIFTING"
