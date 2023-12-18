@@ -22,10 +22,6 @@ function AdminPage() {
           setFoundExcercise={setFoundExcercise}
           blankExcercise={blankExcercise}
           excerciseToEdit={excerciseToEdit}
-          mutateExcercise={(excercise) => {
-            // Implement the mutateExcercise function as needed
-            console.log("Mutate Exercise:", excercise);
-          }}
         />
       ) : (
         <NoExcerciseFoundAdmin
