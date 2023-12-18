@@ -3,31 +3,40 @@ import NoexerciseFoundAdmin from "../components/NoExerciseFoundAdmin";
 import { useState, useEffect } from "react";
 
 function AdminPage() {
-  const [foundexercise, setFoundexercise] = useState(false);
-
-  const blankexercise = {
+  
+  const blankExercise = {
     id: null,
     name: "",
     description: null,
     mediaPath: "",
     intensity: null,
   };
-  const [exerciseToEdit, setexerciseToEdit] = useState(blankexercise);
+
+  const [foundExercise, setFoundexercise] = useState(false);
+  const [exerciseToEdit, setExerciseToEdit] = useState(blankExercise);
+
+  useEffect(() => {
+    // Log the updated value when exerciseToEdit changes
+    console.log(`Updated exerciseToEdit: ${exerciseToEdit.name}`);
+  }, [exerciseToEdit]);
 
   return (
     <div>
       <h1>Add/Edit exercise</h1>
-      {foundexercise ? (
+      {foundExercise ? (
       <FoundexerciseAdmin
           setFoundexercise={setFoundexercise}
-          blankexercise={blankexercise}
+          blankExercise={blankExercise}
           exerciseToEdit={exerciseToEdit}
+          setExerciseToEdit={setExerciseToEdit}
+
         />
       ) : (
         <NoexerciseFoundAdmin
           setFoundexercise={setFoundexercise}
-          setexercise={(exercise) => setexerciseToEdit(exercise)}
-          blankexercise={blankexercise}
+          setExerciseToEdit={setExerciseToEdit}
+          blankExercise={blankExercise}
+          exerciseToEdit={exerciseToEdit}
         />
       )}
     </div>

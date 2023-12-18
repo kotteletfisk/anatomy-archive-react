@@ -63,7 +63,7 @@
       "name": "Squat",
       "description": "Squat down below the knees",
       "mediaPath": null,
-      "intensity": 5
+      "intensity": "3"
     },
     {
       "id": 2,

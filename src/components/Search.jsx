@@ -10,11 +10,12 @@ function Search() {
     const [results, setResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const API_URL = "http://127.0.0.1:7070/search/exercise";
+    const MOCK_URL = "http://127.0.0.1:3000/exercise";
 
     useEffect(() => {
         // Update results when active changes
-        let url = `${API_URL}/${active}?pattern=${searchInput}`;
-        console.log(url);
+        // let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
+        let url = MOCK_URL;
         facade.fetchData(url, (data) => setResults(data), "GET");
     }, [active, searchInput]);
 

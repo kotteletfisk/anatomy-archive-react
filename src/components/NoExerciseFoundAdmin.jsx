@@ -1,10 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { facade } from "../util/facade";
 import Search from "./Search";
 
-function noExerciseFoundAdmin({ setFoundexercise, blankexercise }) {
-  const [exercise, setexercise] = useState(blankexercise);
+function noExerciseFoundAdmin({ setFoundexercise, blankexercise, exerciseToEdit, setExerciseToEdit }) {
+
+
   return (
     <div>
       <p>No exercise found yet</p>
@@ -13,8 +14,7 @@ function noExerciseFoundAdmin({ setFoundexercise, blankexercise }) {
         onClick={() => {
           setFoundexercise(true);
           facade.getExerciseById(1, (exc) => {
-            console.log(exc);
-            setexercise(exc);
+            setExerciseToEdit(exc);
           });
         }}
       >
@@ -23,7 +23,7 @@ function noExerciseFoundAdmin({ setFoundexercise, blankexercise }) {
       <button
         onClick={() => {
           setFoundexercise(true);
-          setexercise({
+          setExerciseToEdit({
             id: 2,
             name: "Squat",
             description: "bøj dine ben",
@@ -37,7 +37,7 @@ function noExerciseFoundAdmin({ setFoundexercise, blankexercise }) {
       <button
         onClick={() => {
           setFoundexercise(true);
-          setexercise(blankexercise);
+          setExerciseToEdit(...blankexercise);
         }}
       >
         Create exercise
