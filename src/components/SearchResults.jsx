@@ -8,7 +8,9 @@ function SearchResults({ results }) {
       <h3>Results</h3>
 
       {results.length === 0 ? (
-        <p>No results . . .</p>
+        <div>
+          <p>No results . . .</p>
+        </div>
       ) : (
         <DisplayResultsSearch data={results} />
       )}
