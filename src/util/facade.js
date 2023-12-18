@@ -1,6 +1,6 @@
 function fetchData(url, callback, method, body) {
     const headers = {
-      'Accept': 'application/json'
+      'Accept': 'application/json',
     };
   
     if (method === 'POST' || method === 'PUT') {
@@ -17,9 +17,15 @@ function fetchData(url, callback, method, body) {
     }
   
     fetch(url, options)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => callback(data))
       .catch(err => {
+        console.error("Error during fetch:", err);
         if (err.status) {
           err.fullError.then(e => console.log(e.detail));
         } else {
@@ -27,6 +33,7 @@ function fetchData(url, callback, method, body) {
         }
       });
   }
+  
   
   const APIURL = "http://localhost:3000";
   // APIURL + EXERCISE
@@ -37,12 +44,26 @@ function fetchData(url, callback, method, body) {
       // You can handle the callback logic here if needed
     }, "PUT", exercise);
   }
+
+  function createExercise(exercise) {
+    fetchData(
+      // URL, callback, method, body
+      EXERCISEURL,
+      () => {},
+      "POST",
+      exercise
+    );
+  }
   
   function mutateExercise(exercise) {
-    if (exercise.id !== "") {
+    if (exercise.id !== undefined && exercise.id !== null && exercise.id !== "" && exercise.id !== 0 && exercise.id !== "0" && exercise.id !== "undefined" && exercise.id !== "null" && exercise.id !== "NaN" && exercise.id !== NaN && exercise.id !== "false" && exercise.id !== false && exercise.id !== "NaN") { 
       // PUT
       editExercise(exercise);
     } else {
+        // POST
+        //SLET MIG
+        exercise.id = Math.random().toString(36).substr(2, 9);
+        //SLET MIG ^
       createExercise(exercise);
     }
   }
@@ -62,15 +83,7 @@ function fetchData(url, callback, method, body) {
     );
   }
   
-  function createExercise(exercise) {
-    fetchData(
-      // URL, callback, method, body
-      EXERCISEURL,
-      () => {},
-      "POST",
-      exercise
-    );
-  }
+
   
   function getExercises(callback) {
     // fetch data

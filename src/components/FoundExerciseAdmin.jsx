@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { facade } from "../util/facade";
+
 
 function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit }) {
-  const [exercise, setExercise] = useState({ ...blankExercise });
+  const [exercise, setExercise] = useState({ blankExercise });
 
   useEffect(() => {
     // Check if exerciseToEdit is not empty before setting the state
@@ -9,6 +11,7 @@ function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit })
       setExercise(exerciseToEdit);
     } else {
       // Reset the state to blankexercise if exerciseToEdit is empty
+      console.log("resetting exercise");
       setExercise(blankExercise);
     }
   }, [exerciseToEdit, blankExercise]);
@@ -22,6 +25,11 @@ function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit })
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submit", exercise);
+    facade.mutateExercise(exercise, (data) => {
+      console.log("exercise updated", data);
+    });
+    setFoundexercise(false);
+    setExercise(blankExercise);
   }
 
   return (
