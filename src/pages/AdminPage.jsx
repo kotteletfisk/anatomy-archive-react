@@ -1,33 +1,33 @@
-import FoundExcerciseAdmin from "../components/FoundExcerciseAdmin";
-import NoExcerciseFoundAdmin from "../components/noExcerciseFoundAdmin";
+import FoundexerciseAdmin from "../components/FoundExerciseAdmin";
+import NoexerciseFoundAdmin from "../components/NoExerciseFoundAdmin";
 import { useState, useEffect } from "react";
 
 function AdminPage() {
-  const [foundExcercise, setFoundExcercise] = useState(false);
+  const [foundexercise, setFoundexercise] = useState(false);
 
-  const blankExcercise = {
+  const blankexercise = {
     id: null,
     name: "",
     description: null,
     mediaPath: "",
     intensity: null,
   };
-  const [excerciseToEdit, setExcerciseToEdit] = useState(blankExcercise);
+  const [exerciseToEdit, setexerciseToEdit] = useState(blankexercise);
 
   return (
     <div>
-      <h1>Add/Edit Excercise</h1>
-      {foundExcercise ? (
-      <FoundExcerciseAdmin
-          setFoundExcercise={setFoundExcercise}
-          blankExcercise={blankExcercise}
-          excerciseToEdit={excerciseToEdit}
+      <h1>Add/Edit exercise</h1>
+      {foundexercise ? (
+      <FoundexerciseAdmin
+          setFoundexercise={setFoundexercise}
+          blankexercise={blankexercise}
+          exerciseToEdit={exerciseToEdit}
         />
       ) : (
-        <NoExcerciseFoundAdmin
-          setFoundExcercise={setFoundExcercise}
-          setExcercise={(excercise) => setExcerciseToEdit(excercise)}
-          blankExcercise={blankExcercise}
+        <NoexerciseFoundAdmin
+          setFoundexercise={setFoundexercise}
+          setexercise={(exercise) => setexerciseToEdit(exercise)}
+          blankexercise={blankexercise}
         />
       )}
     </div>
