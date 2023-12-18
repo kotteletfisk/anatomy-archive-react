@@ -6,18 +6,21 @@ import { facade } from "../util/facade";
 function Search() {
     // Master component for search page.
     // controls state of search bar and search results
-    const [active, setActive] = useState("");
+    const [active, setActive] = useState("byName");
     const [results, setResults] = useState([]);
-    const API_URL = "http://127.0.0.1:3000/exercise";
+    const [searchInput, setSearchInput] = useState("");
+    const API_URL = "http://127.0.0.1:7070/search/exercise";
 
     useEffect(() => {
         // Update results when active changes
-        facade.fetchData(`${API_URL}`, (data) => setResults(data), "GET");
-    }, [active]);
+        let url = `${API_URL}/${active}?pattern=${searchInput}`;
+        console.log(url);
+        facade.fetchData(url, (data) => setResults(data), "GET");
+    }, [active, searchInput]);
 
     return ( 
         <div className="container">
-            <SearchBar active={active} setActive={setActive}/>
+            <SearchBar active={active} setActive={setActive} setSearchInput={setSearchInput}/>
             <SearchResults results={results}/>
         </div>
      );

@@ -1,16 +1,20 @@
 import { useState } from "react";
 
-function SearchBar({ active, setActive }) {
+function SearchBar({ active, setActive, setSearchInput }) {
   const reset = {
     name: "card",
     muscle: "card",
     equipment: "card",
   };
 
-  const [styles, setStyles] = useState(reset);
+  const [styles, setStyles] = useState({...reset, ["name"]: "card-active"});
 
   function manageStyle(name) {
     setStyles((prevStyles) => ({ ...reset, [name]: "card-active" }));
+  }
+
+  function updateInput(e) {
+    setSearchInput(e.target.value);
   }
 
   return (
@@ -19,7 +23,7 @@ function SearchBar({ active, setActive }) {
         <div
           className={styles.name}
           onClick={() => {
-            setActive("name");
+            setActive("byName");
             manageStyle("name");
           }}
         >
@@ -28,7 +32,7 @@ function SearchBar({ active, setActive }) {
         <div
           className={styles.muscle}
           onClick={() => {
-            setActive("muscle");
+            setActive("byMuscle");
             manageStyle("muscle");
           }}
         >
@@ -37,14 +41,14 @@ function SearchBar({ active, setActive }) {
         <div
           className={styles.equipment}
           onClick={() => {
-            setActive("equipment");
+            setActive("byEquipment");
             manageStyle("equipment");
           }}
         >
           <h3>Search by equipment</h3>
         </div>
       </div>
-      <input id="search-bar" type="text" placeholder="Search" />
+      <input id="search-bar" type="text" placeholder="Search" onChange={updateInput} />
     </div>
   );
 }
