@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import { fetchData } from "../util/persistence";
+import { facade } from "../util/facade";
 
 function Search() {
     // Master component for search page.
@@ -12,7 +12,7 @@ function Search() {
 
     useEffect(() => {
         // Update results when active changes
-        fetchData(`${API_URL}`, (data) => setResults(data), "GET");
+        facade.fetchData(`${API_URL}`, (data) => setResults(data), "GET");
     }, [active]);
 
     return ( 
