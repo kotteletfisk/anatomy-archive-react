@@ -1,5 +1,5 @@
 import FoundExcerciseAdmin from "../components/FoundExcerciseAdmin";
-import NoExcerciseFoundAdmin from "../components/noExcerciseFoundAdmin";
+import NoExcerciseFoundAdmin from "../components/NoExcerciseFoundAdmin";
 import { useState, useEffect } from "react";
 
 function AdminPage() {
