@@ -9,6 +9,7 @@ import Test from "./pages/Test";
 import AdminPage from "./pages/AdminPage";
 import ErrorPage from "./pages/ErrorPage";
 import Search from "./components/Search";
+import LoginModal from "./components/LoginModal";
 
 function App() {
   const routes = createBrowserRouter(
@@ -16,7 +17,7 @@ function App() {
       <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path="/test" element={<Test />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/admin-page" element={<AdminPage />} />
+        <Route path="/login" element={<LoginModal />} />
       </Route>
     )
   );
