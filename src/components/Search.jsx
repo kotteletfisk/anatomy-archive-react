@@ -14,9 +14,8 @@ function Search() {
 
     useEffect(() => {
         // Update results when active changes
-        //let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
-         let url = MOCK_URL;
-        if (searchInput === "") {
+        let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
+            if (searchInput === "") {
             setResults([]);
             return;
         }

@@ -50,7 +50,7 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
-          <NavLink to="/login">
+          <NavLink onClick={closeModal}>
             <img src="/src/assets/loginLock.png" width={20} height={20} />
           </NavLink>
         </div>

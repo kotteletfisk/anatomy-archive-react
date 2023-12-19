@@ -20,7 +20,7 @@ function LoginModal({ closeModal }) {
     e.preventDefault();
     console.log("perform login");
     auth.login(credentials.username, credentials.password, setIsLoggedIn, setError);
-    console.log(error)
+    closeModal();
   }
 
   function performLogout(e) {
