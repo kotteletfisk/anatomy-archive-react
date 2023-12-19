@@ -178,6 +178,11 @@ th {
   max-width: 1280px;
 }
 
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 #nav-items a {
   color: white;
   text-decoration: none;

@@ -9,6 +9,7 @@ function LoginModal({ closeModal }) {
   };
   const [credentials, setCredentials] = useState(init);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   function handleInput(e) {
     setCredentials({ ...credentials, [e.target.id]: e.target.value });
@@ -18,7 +19,8 @@ function LoginModal({ closeModal }) {
   function performLogin(e) {
     e.preventDefault();
     console.log("perform login");
-    auth.login(credentials.username, credentials.password, setIsLoggedIn);
+    auth.login(credentials.username, credentials.password, setIsLoggedIn, setError);
+    console.log(error)
   }
 
   function performLogout(e) {
@@ -56,6 +58,7 @@ function LoginModal({ closeModal }) {
               />
               <button onClick={performLogin}>Login</button>
             </form>
+            <p className="error container">{error}</p>
           </div>
         )}
       </div>
