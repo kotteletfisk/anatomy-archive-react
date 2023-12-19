@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DetailModal from "../components/DetailModal";
+import Login from "../components/Login";
 
 function Test() {
   const [showModal, setShowModal] = useState(false);
@@ -30,8 +31,10 @@ function Test() {
       {showModal ? (
         <div>
           <DetailModal closeModal={handleClicked} data={obj} />
+          
         </div>
       ) : null}
+      <Login />
     </>
   );
 }

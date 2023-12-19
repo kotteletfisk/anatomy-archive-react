@@ -1,5 +1,5 @@
-import FoundexerciseAdmin from "../components/FoundExerciseAdmin";
-import NoexerciseFoundAdmin from "../components/NoExerciseFoundAdmin";
+import FoundExerciseAdmin from "../components/FoundExerciseAdmin";
+import NoExerciseFoundAdmin from "../components/NoExerciseFoundAdmin";
 import { useState, useEffect } from "react";
 
 function AdminPage() {
@@ -24,7 +24,7 @@ function AdminPage() {
     <div>
       <h1>Add/Edit exercise</h1>
       {foundExercise ? (
-      <FoundexerciseAdmin
+      <FoundExerciseAdmin
           setFoundexercise={setFoundexercise}
           blankExercise={blankExercise}
           exerciseToEdit={exerciseToEdit}
@@ -32,7 +32,7 @@ function AdminPage() {
 
         />
       ) : (
-        <NoexerciseFoundAdmin
+        <NoExerciseFoundAdmin
           setFoundexercise={setFoundexercise}
           setExerciseToEdit={setExerciseToEdit}
           blankExercise={blankExercise}

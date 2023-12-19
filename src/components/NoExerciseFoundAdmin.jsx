@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { facade } from "../util/facade";
+import { crud } from "../util/facade";
 import Search from "./Search";
 
-function noExerciseFoundAdmin({ setFoundexercise, blankexercise, exerciseToEdit, setExerciseToEdit }) {
+function noExerciseFoundAdmin({ setFoundexercise, blankExercise, exerciseToEdit, setExerciseToEdit }) {
 
 
   return (
@@ -13,7 +13,7 @@ function noExerciseFoundAdmin({ setFoundexercise, blankexercise, exerciseToEdit,
       <button
         onClick={() => {
           setFoundexercise(true);
-          facade.getExerciseById(1, (exc) => {
+          crud.getExerciseById(1, (exc) => {
             setExerciseToEdit(exc);
           });
         }}
@@ -37,7 +37,7 @@ function noExerciseFoundAdmin({ setFoundexercise, blankexercise, exerciseToEdit,
       <button
         onClick={() => {
           setFoundexercise(true);
-          setExerciseToEdit(...blankexercise);
+          setExerciseToEdit(blankExercise);
         }}
       >
         Create exercise

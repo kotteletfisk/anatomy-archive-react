@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { auth } from "../util/facade";
 
 function LoginModal({ closeModal }) {
   const init = {
@@ -6,6 +7,7 @@ function LoginModal({ closeModal }) {
     password: "",
   };
   const [credentials, setCredentials] = useState(init);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleInput(e) {
     setCredentials({ ...credentials, [e.target.id]: e.target.value });
@@ -14,6 +16,7 @@ function LoginModal({ closeModal }) {
 
   function performLogin(e) {
     e.preventDefault();
+    auth.login(credentials.username, credentials.password, setIsLoggedIn);
     console.log("perform login");
   }
 
