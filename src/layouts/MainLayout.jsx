@@ -1,11 +1,13 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import { useEffect, useRef, useState } from "react";
+import LoginModal from "../components/LoginModal";
 
 function MainLayout() {
   const location = useLocation();
   const navbar = useRef(null);
   const [navOffsetTop, setNavOffsetTop] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   function showContent() {
     if (location.pathname === "/") {
@@ -14,6 +16,15 @@ function MainLayout() {
       return <Outlet />;
     }
   }
+
+  function closeModal() {
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  }
+
 
   function handleScroll() {
     console.log(navOffsetTop);
@@ -42,13 +53,19 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
-          <NavLink to="/admin-page">
+          <NavLink onClick={() => setShowModal(true)}>
             <img src="src\assets\loginLock.png" width={20} height={20} />
           </NavLink>
         </div>
       </div>
 
       <div id="content">{showContent()}</div>
+      {showModal ? (
+        <div>
+          <LoginModal closeModal={closeModal} />
+        </div>
+      ) : null
+      }
     </>
   );
 }
