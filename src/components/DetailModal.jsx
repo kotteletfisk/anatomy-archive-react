@@ -19,7 +19,7 @@ function DetailModal({ closeModal, data }) {
 
         <div className="modal-footer">
           <Link to="/search" onClick={() => closeModal()}>
-            See more
+            See More ?
           </Link>
         </div>
       </div>
