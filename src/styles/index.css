@@ -318,3 +318,34 @@ p {
   margin-top: 2rem;
   font-size: 1.25rem;
 }
+
+.details-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
+
+.details-container-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+.details-container-head img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+}
+
+.details-container-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
