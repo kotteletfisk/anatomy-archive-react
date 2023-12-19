@@ -25,7 +25,8 @@ function fetchData(url, callback, method, body) {
   }
   
   
-  const APIURL = "http://localhost:3000";
+  const MOCK_URL = "http://localhost:3000";
+  const APIURL = "http://localhost:7070";
   // APIURL + EXERCISE
   const EXERCISEURL = `${APIURL}/exercise`;
   const AUTHENTICATION_ROUTE = "/auth/login";
@@ -60,6 +61,7 @@ function fetchData(url, callback, method, body) {
       .then((data) => {
         callback(true);
         setToken(data.token);
+        console.log(data.token);
       })
       .catch((err) => {
         if (err.status) {

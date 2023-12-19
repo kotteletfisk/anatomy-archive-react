@@ -7,7 +7,7 @@ function LoginModal({ closeModal }) {
     password: "",
   };
   const [credentials, setCredentials] = useState(init);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Global context?
 
   function handleInput(e) {
     setCredentials({ ...credentials, [e.target.id]: e.target.value });
@@ -16,8 +16,8 @@ function LoginModal({ closeModal }) {
 
   function performLogin(e) {
     e.preventDefault();
-    auth.login(credentials.username, credentials.password, setIsLoggedIn);
     console.log("perform login");
+    auth.login(credentials.username, credentials.password, setIsLoggedIn);
   }
 
   return (
