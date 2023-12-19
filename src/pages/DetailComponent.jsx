@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { facade } from "../util/facade";
 import { useEffect, useState } from "react";
+import { crud } from "../util/facade";
 
 function DetailComponent() {
   const { id } = useParams();
@@ -8,7 +8,7 @@ function DetailComponent() {
 
   useEffect(() => {
     if (id > 0) {
-      facade.getExerciseById(id, (d) => setDetails(d));
+      crud.getExerciseById(id, (d) => setDetails(d));
     }
   }, []);
 
@@ -19,10 +19,7 @@ function DetailComponent() {
           <p>No results for id = {id}</p>
         </div>
       ) : (
-        <div
-          style={{ border: "1px solid black" }}
-          className="details-container"
-        >
+        <div className="details-container">
           <div className="details-container-head">
             <h1>{details.name}</h1>
             {details.mediaPath ? (
