@@ -21,43 +21,30 @@ function LoginModal({ closeModal }) {
     auth.login(credentials.username, credentials.password, setIsLoggedIn);
   }
 
-  function performLogout(e) {
-    e.preventDefault();
-    console.log("perform logout");
-    auth.logout(setIsLoggedIn);
-  }
-
   return (
     <div className="modal-bg">
       <div className="modal-box">
         <div className="modal-close">
           <button onClick={() => closeModal()}>X</button>
         </div>
-        {isLoggedIn ? (
-          <div className="container">
-            <h2>Logout?</h2>
-            <button onClick={performLogout}>Logout</button>
-          </div>
-        ) : (
-          <div className="container">
-            <h2>Login</h2>
-            <form>
-              <input
-                type="text"
-                placeholder="username"
-                id="username"
-                onChange={handleInput}
-              />
-              <input
-                type="password"
-                placeholder="password"
-                id="password"
-                onChange={handleInput}
-              />
-              <button onClick={performLogin}>Login</button>
-            </form>
-          </div>
-        )}
+        <div className="container">
+          <h2>Login</h2>
+          <form>
+            <input
+              type="text"
+              placeholder="username"
+              id="username"
+              onChange={handleInput}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              onChange={handleInput}
+            />
+            <button onClick={performLogin}>Login</button>
+          </form>
+        </div>
       </div>
     </div>
   );
