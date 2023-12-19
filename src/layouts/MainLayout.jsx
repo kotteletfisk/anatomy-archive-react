@@ -17,7 +17,7 @@ function MainLayout() {
     }
   }
 
-  function closeModal() {
+  function toggleModal() {
     if (showModal) {
       setShowModal(false);
     } else {
@@ -50,7 +50,7 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
-          <NavLink onClick={closeModal}>
+          <NavLink onClick={toggleModal}>
             <img src="/src/assets/loginLock.png" width={20} height={20} />
           </NavLink>
         </div>
@@ -59,7 +59,7 @@ function MainLayout() {
       <div id="content">{showContent()}</div>
       {showModal ? (
         <div>
-          <LoginModal closeModal={closeModal} />
+          <LoginModal toggleModal={toggleModal} />
         </div>
       ) : null}
     </>
