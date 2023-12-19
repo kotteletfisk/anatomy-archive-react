@@ -16,8 +16,6 @@ function MainLayout() {
   }
 
   function handleScroll() {
-    console.log(navOffsetTop);
-
     if (window.scrollY >= navOffsetTop) {
       navbar.current.classList.add("sticky");
     } else {
