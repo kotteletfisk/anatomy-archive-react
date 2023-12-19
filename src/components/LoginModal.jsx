@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { auth } from "../util/facade";
+import AuthContext from "./AuthContext";
 
 function LoginModal({ closeModal }) {
   const init = {
@@ -7,7 +8,7 @@ function LoginModal({ closeModal }) {
     password: "",
   };
   const [credentials, setCredentials] = useState(init);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Global context?
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   function handleInput(e) {
     setCredentials({ ...credentials, [e.target.id]: e.target.value });

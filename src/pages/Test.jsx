@@ -1,9 +1,11 @@
 import { useState } from "react";
 import DetailModal from "../components/DetailModal";
-import Login from "../components/Login";
+import { useContext } from "react";
+import AuthContext from "../components/AuthContext";
 
 function Test() {
   const [showModal, setShowModal] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   function handleClicked() {
     if (showModal) {
@@ -25,6 +27,7 @@ function Test() {
   return (
     <>
       <h1>test</h1>
+      <h2>{isLoggedIn ? "Logged in" : "Not logged in"}</h2>
 
       <button onClick={() => handleClicked()}>Open Modal</button>
 
@@ -34,7 +37,6 @@ function Test() {
           
         </div>
       ) : null}
-      <Login />
     </>
   );
 }
