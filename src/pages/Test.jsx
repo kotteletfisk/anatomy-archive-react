@@ -34,7 +34,6 @@ function Test() {
           
         </div>
       ) : null}
-      <Login />
     </>
   );
 }
