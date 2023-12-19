@@ -1,17 +1,27 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import { useEffect, useRef, useState } from "react";
+import LoginModal from "../components/LoginModal";
 
 function MainLayout() {
   const location = useLocation();
   const navbar = useRef(null);
   const [navOffsetTop, setNavOffsetTop] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   function showContent() {
     if (location.pathname === "/") {
       return <Home />;
     } else {
       return <Outlet />;
+    }
+  }
+
+  function closeModal() {
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
     }
   }
 
@@ -47,6 +57,11 @@ function MainLayout() {
       </div>
 
       <div id="content">{showContent()}</div>
+      {showModal ? (
+        <div>
+          <LoginModal closeModal={closeModal} />
+        </div>
+      ) : null}
     </>
   );
 }

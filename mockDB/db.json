@@ -135,11 +135,12 @@
       "description": "Pull-up bar description"
     }
   ],
-  "user": [
+  "users": [
     {
       "id": 1,
       "username": "admin",
-      "password": "admin"
+      "password": "admin",
+      "role": "ADMIN"
     }
   ]
 }

@@ -7,10 +7,7 @@ function fetchData(url, callback, method, body) {
       headers['Content-Type'] = 'application/json';
     }
   
-    const options = {
-      method,
-      headers
-    };
+    const options = makeOptions(method, body, true); //True add's the token
   
     if (body) {
       options.body = JSON.stringify(body);
@@ -24,20 +21,90 @@ function fetchData(url, callback, method, body) {
         return res.json();
       })
       .then(data => callback(data))
-      .catch(err => {
-        console.error("Error during fetch:", err);
+      .catch(handleHttpErrors);
+  }
+  
+  
+  const MOCK_URL = "http://localhost:3000";
+  const APIURL = "http://localhost:7070";
+  // APIURL + EXERCISE
+  const EXERCISEURL = `${APIURL}/exercise`;
+  const AUTHENTICATION_ROUTE = "/auth/login";
+
+
+  const setToken = (token) => {
+    localStorage.setItem("jwtToken", token);
+  };
+
+  const getToken = () => {
+    return localStorage.getItem("jwtToken");
+  };
+
+  const logout = (callback) => {
+    localStorage.removeItem("jwtToken");
+    callback(false);
+  };
+
+  const handleHttpErrors = (res) => {
+    if (!res.ok) {
+      return Promise.reject({ status: res.status, fullError: res.json() });
+    }
+    return res.json();
+  };
+
+  const login = (user, pass, callback) => {
+    const payLoad = { username: user, password: pass };
+    const options = makeOptions("POST", payLoad);
+
+    return fetch(APIURL + AUTHENTICATION_ROUTE, options)
+      .then(handleHttpErrors)
+      .then((data) => {
+        callback(true);
+        setToken(data.token);
+        console.log(data.token);
+      })
+      .catch((err) => {
         if (err.status) {
-          err.fullError.then(e => console.log(e.detail));
+          err.fullError.then((e) => console.log(e));
         } else {
           console.log("Network error");
         }
       });
-  }
-  
-  
-  const APIURL = "http://localhost:3000";
-  // APIURL + EXERCISE
-  const EXERCISEURL = `${APIURL}/exercise`;
+  };
+
+  const makeOptions = (method, payload, addToken) => {
+    const opts = {
+      method: method,
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    if (addToken) {
+      opts.headers["Authorization"] = `Bearer ${getToken()}`;
+    }
+
+    if (payload) {
+      opts.body = JSON.stringify(payload);
+    }
+    return opts;
+  };
+
+  const getUserRoles = () => {
+    const token = getToken();
+    if (token != null) {
+      const payloadBase64 = getToken().split(".")[1];
+      const decodedClaims = JSON.parse(window.atob(payloadBase64));
+      const roles = decodedClaims.roles;
+      return roles;
+    } else return "";
+  };
+
+  const hasUserAccess = (neededRole, loggedIn) => {
+    const roles = getUserRoles().split(",");
+    return loggedIn && roles.includes(neededRole);
+  };
   
   function editExercise(exercise) {
     fetchData(`${EXERCISEURL}/${exercise.id}`, () => {
@@ -97,11 +164,18 @@ function fetchData(url, callback, method, body) {
     // delete from exercises array via setexercises()
   }
   
-  export const facade = {
+  export const crud = {
     mutateExercise,
     getExercises,
     getExerciseById,
     deleteExerciseById,
     fetchData
   };
-  
+
+  export const auth = {
+    login,
+    logout,
+    getToken,
+    getUserRoles,
+    hasUserAccess,
+  };

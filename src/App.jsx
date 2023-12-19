@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Test from "./pages/Test";
-import AdminPage from "./pages/AdminPage";
 import ErrorPage from "./pages/ErrorPage";
 import Search from "./components/Search";
+import LoginModal from "./components/LoginModal";
 import DetailComponent from "./pages/DetailComponent";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path="/test" element={<Test />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/admin-page" element={<AdminPage />} />
+        <Route path="/login" element={<LoginModal />} />
         <Route path="/exercises/:id" element={<DetailComponent />} />
       </Route>
     )

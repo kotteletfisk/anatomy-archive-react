@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { facade } from "../util/facade";
+import { crud } from "../util/facade";
 
 
 function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit }) {
@@ -25,7 +25,7 @@ function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit })
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submit", exercise);
-    facade.mutateExercise(exercise, (data) => {
+    crud.mutateExercise(exercise, (data) => {
       console.log("exercise updated", data);
     });
     setFoundexercise(false);
@@ -107,7 +107,7 @@ function FoundExerciseAdmin({ setFoundexercise, blankExercise, exerciseToEdit })
           className="btn btn-danger"
           onClick={() => {
             setFoundexercise(false);
-            setExercise(blankexercise);
+            setExercise(blankExercise);
           }}
         >
           Cancel

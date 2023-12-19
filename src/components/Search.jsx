@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import { facade } from "../util/facade";
+import { crud } from "../util/facade";
 
 function Search() {
     // Master component for search page.
@@ -14,13 +14,13 @@ function Search() {
 
     useEffect(() => {
         // Update results when active changes
-        let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
-        // let url = MOCK_URL;
+        //let url = `${API_URL}/${active}?pattern=${searchInput}`; // remove comment to use API
+         let url = MOCK_URL;
         if (searchInput === "") {
             setResults([]);
             return;
         }
-        facade.fetchData(url, (data) => setResults(data), "GET");
+        crud.fetchData(url, (data) => setResults(data), "GET");
     }, [active, searchInput]);
 
     return ( 
