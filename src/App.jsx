@@ -9,6 +9,7 @@ import Test from "./pages/Test";
 import AdminPage from "./pages/AdminPage";
 import ErrorPage from "./pages/ErrorPage";
 import Search from "./components/Search";
+import DetailComponent from "./pages/DetailComponent";
 
 function App() {
   const routes = createBrowserRouter(
@@ -17,6 +18,7 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route path="/search" element={<Search />} />
         <Route path="/admin-page" element={<AdminPage />} />
+        <Route path="/exercises/:id" element={<DetailComponent />} />
       </Route>
     )
   );

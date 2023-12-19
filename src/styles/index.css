@@ -313,3 +313,30 @@ p {
   margin-top: 2rem;
   font-size: 1.25rem;
 }
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
+
+.details-container-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+.details-container-head img {
+  width: 20%;
+  height: 20%;
+}
+
+.details-container-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
