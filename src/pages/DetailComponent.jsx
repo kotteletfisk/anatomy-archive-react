@@ -13,7 +13,7 @@ function DetailComponent() {
   }, []);
 
   return (
-    <>
+    <div>
       {!details.name ? (
         <div className="details-container">
           <p>No results for id = {id}</p>
@@ -36,7 +36,7 @@ function DetailComponent() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

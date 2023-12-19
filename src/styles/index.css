@@ -315,8 +315,6 @@ p {
 }
 
 .details-container {
-  position: relative;
-  display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
@@ -332,9 +330,7 @@ p {
 .details-container-head img {
   width: 100px;
   height: 100px;
-  position: absolute;
-  right: 0;
-  margin-right: 5px;
+  border-radius: 50%;
 }
 
 .details-container-body {
