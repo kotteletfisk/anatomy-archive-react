@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 function DetailModal({ closeModal, data }) {
+  const url = `/exercises/` + data.id;
+
   return (
     <div className="modal-bg">
       <div className="modal-box">
@@ -18,7 +20,7 @@ function DetailModal({ closeModal, data }) {
         </div>
 
         <div className="modal-footer">
-          <Link to="/search" onClick={() => closeModal()}>
+          <Link to={url} onClick={closeModal}>
             See More ?
           </Link>
         </div>

@@ -52,7 +52,7 @@ function fetchData(url, callback, method, body) {
     return res.json();
   };
 
-  const login = (user, pass, callback) => {
+  const login = (user, pass, callback, errorCallback) => {
     const payLoad = { username: user, password: pass };
     const options = makeOptions("POST", payLoad);
 
@@ -65,7 +65,7 @@ function fetchData(url, callback, method, body) {
       })
       .catch((err) => {
         if (err.status) {
-          err.fullError.then((e) => console.log(e));
+          err.fullError.then((e) => errorCallback(e.message));
         } else {
           console.log("Network error");
         }

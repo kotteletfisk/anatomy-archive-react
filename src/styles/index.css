@@ -178,6 +178,11 @@ th {
   max-width: 1280px;
 }
 
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 #nav-items a {
   color: white;
   text-decoration: none;
@@ -312,4 +317,31 @@ p {
   align-items: center;
   margin-top: 2rem;
   font-size: 1.25rem;
+}
+
+.details-container {
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
+
+.details-container-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+.details-container-head img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.details-container-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
 }

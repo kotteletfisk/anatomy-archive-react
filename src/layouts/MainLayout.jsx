@@ -25,7 +25,6 @@ function MainLayout() {
     }
   }
 
-
   function handleScroll() {
     if (window.scrollY >= navOffsetTop) {
       navbar.current.classList.add("sticky");
@@ -51,8 +50,8 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
-          <NavLink onClick={() => setShowModal(true)}>
-            <img src="src\assets\loginLock.png" width={20} height={20} />
+          <NavLink to="/login">
+            <img src="/src/assets/loginLock.png" width={20} height={20} />
           </NavLink>
         </div>
       </div>
@@ -62,8 +61,7 @@ function MainLayout() {
         <div>
           <LoginModal closeModal={closeModal} />
         </div>
-      ) : null
-      }
+      ) : null}
     </>
   );
 }

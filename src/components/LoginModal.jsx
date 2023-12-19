@@ -9,6 +9,7 @@ function LoginModal({ closeModal }) {
   };
   const [credentials, setCredentials] = useState(init);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   function handleInput(e) {
     setCredentials({ ...credentials, [e.target.id]: e.target.value });
@@ -18,7 +19,14 @@ function LoginModal({ closeModal }) {
   function performLogin(e) {
     e.preventDefault();
     console.log("perform login");
-    auth.login(credentials.username, credentials.password, setIsLoggedIn);
+    auth.login(credentials.username, credentials.password, setIsLoggedIn, setError);
+    console.log(error)
+  }
+
+  function performLogout(e) {
+    e.preventDefault();
+    console.log("perform logout");
+    auth.logout(setIsLoggedIn);
   }
 
   return (
@@ -27,24 +35,32 @@ function LoginModal({ closeModal }) {
         <div className="modal-close">
           <button onClick={() => closeModal()}>X</button>
         </div>
-        <div className="container">
-          <h2>Login</h2>
-          <form>
-            <input
-              type="text"
-              placeholder="username"
-              id="username"
-              onChange={handleInput}
-            />
-            <input
-              type="password"
-              placeholder="password"
-              id="password"
-              onChange={handleInput}
-            />
-            <button onClick={performLogin}>Login</button>
-          </form>
-        </div>
+        {isLoggedIn ? (
+          <div className="container">
+            <h2>Logout?</h2>
+            <button onClick={performLogout}>Logout</button>
+          </div>
+        ) : (
+          <div className="container">
+            <h2>Login</h2>
+            <form>
+              <input
+                type="text"
+                placeholder="username"
+                id="username"
+                onChange={handleInput}
+              />
+              <input
+                type="password"
+                placeholder="password"
+                id="password"
+                onChange={handleInput}
+              />
+              <button onClick={performLogin}>Login</button>
+            </form>
+            <p className="error container">{error}</p>
+          </div>
+        )}
       </div>
     </div>
   );
