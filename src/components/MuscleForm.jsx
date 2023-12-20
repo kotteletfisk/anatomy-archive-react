@@ -1,10 +1,17 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { crud } from "../util/facade";
 
 function MuscleForm({ submit }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
   const mediaPathRef = useRef();
   const muscleGroupRef = useRef();
+
+  // const [muscleOptions, setMuscleOptions] = useState([]);
+
+  useEffect(() => {
+    // crud.getAllMusclegroups(setMuscleOptions);
+  }, []);
 
   return (
     <>
@@ -30,10 +37,18 @@ function MuscleForm({ submit }) {
 
       <label htmlFor="musclegroup">Muscle Group</label>
       <select id="musclegroup" ref={muscleGroupRef}>
-        <option>Chest</option>
-        <option>Back</option>
-        <option>Shoulders</option>
-        <option>Arms</option>
+        {/* {muscleOptions.map((muscle) => {
+          return (
+            <option key={muscle.id} value={muscle.id}>
+              {muscle.name}
+            </option>
+          );
+        })} */}
+
+        <option value="1">Chest</option>
+        <option value="2">Back</option>
+        <option value="3">Shoulders</option>
+        <option value="4">Biceps</option>
       </select>
 
       <button

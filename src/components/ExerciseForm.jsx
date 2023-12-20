@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { crud } from "../util/facade";
 
 function ExerciseForm({ submit }) {
   const nameRef = useRef();
@@ -6,28 +7,18 @@ function ExerciseForm({ submit }) {
   const mediaPathRef = useRef();
   const intensityRef = useRef();
   const typeRef = useRef();
+
   const [selectMuscles, setSelectMuscles] = useState([]);
   const [selectEquipment, setSelectEquipment] = useState([]);
+  const [muscleOptions, setMuscleOptions] = useState([]);
+  const [equipmentOptions, setEquipmentOptions] = useState([]);
+  const [typsOptions, setTypsOptions] = useState([]);
 
-  const muscleOptions = [
-    "Biceps",
-    "Triceps",
-    "Chest",
-    "Back",
-    "Shoulders",
-    "Legs",
-    "Abs",
-  ];
-
-  const equipmentOptions = [
-    "Barbell",
-    "Dumbbell",
-    "Kettlebell",
-    "Medicine Ball",
-    "Resistance Band",
-    "Bench",
-    "Pull-Up Bar",
-  ];
+  useEffect(() => {
+    crud.getAllMuscles(setMuscleOptions);
+    crud.getAllEquipment(setEquipmentOptions);
+    crud.getAllExerciseTypes(setTypsOptions);
+  }, []);
 
   return (
     <>
@@ -61,24 +52,28 @@ function ExerciseForm({ submit }) {
 
       <label htmlFor="type">Type</label>
       <select id="type" ref={typeRef}>
-        <option>Cardio</option>
-        <option>Strength</option>
-        <option>Stretching</option>
+        {typsOptions.map((type) => {
+          return (
+            <option key={type.id} value={type.id}>
+              {type.typeName}
+            </option>
+          );
+        })}
       </select>
 
       {/* Muscles */}
       <div className="card">
         <label htmlFor="muscles">Muscles</label> <br />
         <select id="muscles" multiple>
-          {muscleOptions.map((muscle, index) => {
+          {muscleOptions.map((muscle) => {
             return (
               <option
-                key={index}
+                key={muscle.id}
                 onClick={() => {
                   setSelectMuscles([...selectMuscles, muscle]);
                 }}
               >
-                {muscle}
+                {muscle.name}
               </option>
             );
           })}
@@ -87,7 +82,7 @@ function ExerciseForm({ submit }) {
         {selectMuscles.map((muscle, index) => {
           return (
             <div key={index}>
-              {muscle}
+              {muscle.name}
               <button
                 onClick={() => {
                   setSelectMuscles(
@@ -106,15 +101,15 @@ function ExerciseForm({ submit }) {
       <div className="card">
         <label htmlFor="equipment">Equipment</label>
         <select id="equipment" multiple>
-          {equipmentOptions.map((equipment, index) => {
+          {equipmentOptions.map((equipment) => {
             return (
               <option
-                key={index}
+                key={equipment.id}
                 onClick={() => {
                   setSelectEquipment([...selectEquipment, equipment]);
                 }}
               >
-                {equipment}
+                {equipment.name}
               </option>
             );
           })}
@@ -123,7 +118,7 @@ function ExerciseForm({ submit }) {
         {selectEquipment.map((equipment, index) => {
           return (
             <div key={index}>
-              {equipment}
+              {equipment.name}
               <button
                 onClick={() => {
                   setSelectEquipment(
