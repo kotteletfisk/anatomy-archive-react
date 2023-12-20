@@ -67,7 +67,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
             manageActiveStyle("byExercise");
           }}
         >
-          <h3>Search by exercise</h3>
+          <h3>By exercise</h3>
         </div>
         <div
           className={activestyles.byMuscle}
@@ -76,7 +76,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
             manageActiveStyle("byMuscle");
           }}
         >
-          <h3>Search by muscle</h3>
+          <h3>By muscle</h3>
         </div>
         <div
           className={activestyles.byEquipment}
@@ -85,7 +85,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
             manageActiveStyle("byEquipment");
           }}
         >
-          <h3>Search by equipment</h3>
+          <h3>By equipment</h3>
         </div>
       </div>
       <input id="search-bar" type="text" placeholder="Search" onChange={updateInput} />
