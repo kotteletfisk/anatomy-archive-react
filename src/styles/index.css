@@ -345,3 +345,11 @@ p {
   align-items: start;
   margin: 10px;
 }
+
+.container-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
