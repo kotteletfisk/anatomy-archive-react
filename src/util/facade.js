@@ -34,13 +34,7 @@ const MUSCLEURL = `${APIURL}/muscle`;
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
 };
-const setToken = (token) => {
-  localStorage.setItem("jwtToken", token);
-};
 
-const getToken = () => {
-  return localStorage.getItem("jwtToken");
-};
 const getToken = () => {
   return localStorage.getItem("jwtToken");
 };
@@ -49,17 +43,7 @@ const logout = (callback) => {
   localStorage.removeItem("jwtToken");
   callback(false);
 };
-const logout = (callback) => {
-  localStorage.removeItem("jwtToken");
-  callback(false);
-};
 
-const handleHttpErrors = (res) => {
-  if (!res.ok) {
-    return Promise.reject({ status: res.status, fullError: res.json() });
-  }
-  return res.json();
-};
 const handleHttpErrors = (res) => {
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });
@@ -70,25 +54,6 @@ const handleHttpErrors = (res) => {
 const login = (user, pass, callback, errorCallback) => {
   const payLoad = { username: user, password: pass };
   const options = makeOptions("POST", payLoad);
-  const login = (user, pass, callback, errorCallback) => {
-    const payLoad = { username: user, password: pass };
-    const options = makeOptions("POST", payLoad);
-
-    return fetch(APIURL + AUTHENTICATION_ROUTE, options)
-      .then(handleHttpErrors)
-      .then((data) => {
-        callback(true);
-        setToken(data.token);
-        console.log(data.token);
-      })
-      .catch((err) => {
-        if (err.status) {
-          err.fullError.then((e) => errorCallback(e.message));
-        } else {
-          console.log("Network error");
-        }
-      });
-  };
   return fetch(APIURL + AUTHENTICATION_ROUTE, options)
     .then(handleHttpErrors)
     .then((data) => {
@@ -113,42 +78,17 @@ const makeOptions = (method, payload, addToken) => {
       Accept: "application/json",
     },
   };
-  const makeOptions = (method, payload, addToken) => {
-    const opts = {
-      method: method,
-      headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
-      },
-    };
 
-    if (addToken) {
-      opts.headers["Authorization"] = `Bearer ${getToken()}`;
-    }
-    if (addToken) {
-      opts.headers["Authorization"] = `Bearer ${getToken()}`;
-    }
+  if (addToken) {
+    opts.headers["Authorization"] = `Bearer ${getToken()}`;
+  }
 
-    if (payload) {
-      opts.body = JSON.stringify(payload);
-    }
-    return opts;
-  };
   if (payload) {
     opts.body = JSON.stringify(payload);
   }
   return opts;
 };
 
-const getUserRoles = () => {
-  const token = getToken();
-  if (token != null) {
-    const payloadBase64 = getToken().split(".")[1];
-    const decodedClaims = JSON.parse(window.atob(payloadBase64));
-    const roles = decodedClaims.roles;
-    return roles;
-  } else return "";
-};
 const getUserRoles = () => {
   const token = getToken();
   if (token != null) {
@@ -165,28 +105,7 @@ const hasUserAccess = (neededRole, loggedIn) => {
 };
 
 function editExercise(exercise) {
-  fetchData(
-    `${EXERCISEURL}/${exercise.id}`,
-    () => {
-      const hasUserAccess = (neededRole, loggedIn) => {
-        const roles = getUserRoles().split(",");
-        return loggedIn && roles.includes(neededRole);
-      };
-
-      function editExercise(exercise) {
-        fetchData(
-          `${EXERCISEURL}/${exercise.id}`,
-          () => {
-            // You can handle the callback logic here if needed
-          },
-          "PUT",
-          exercise
-        );
-      }
-    },
-    "PUT",
-    exercise
-  );
+  fetchData(`${EXERCISEURL}/${exercise.id}`, () => {}, "PUT", exercise);
 }
 
 function createExercise(exercise) {
