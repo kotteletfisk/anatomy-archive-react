@@ -18,7 +18,6 @@ function MuscleForm({ submit }) {
       <h2>MuscleForm</h2>
       <label htmlFor="name">Name</label>
       <input type="text" id="name" placeholder="Enter name" ref={nameRef} />
-
       <label htmlFor="Description">Description</label>
       <input
         type="text"
@@ -26,7 +25,6 @@ function MuscleForm({ submit }) {
         placeholder="Enter description"
         ref={descriptionRef}
       />
-
       <label htmlFor="mediaPath">MediaPath</label>
       <input
         type="text"
@@ -34,9 +32,8 @@ function MuscleForm({ submit }) {
         placeholder="Enter mediaPath"
         ref={mediaPathRef}
       />
-
-      <label htmlFor="musclegroup">Muscle Group</label>
-      <select id="musclegroup" ref={muscleGroupRef}>
+      <label htmlFor="select-type">Muscle Group</label>
+      <select id="select-type" ref={muscleGroupRef}>
         {/* {muscleOptions.map((muscle) => {
           return (
             <option key={muscle.id} value={muscle.id}>
@@ -50,7 +47,6 @@ function MuscleForm({ submit }) {
         <option value="3">Shoulders</option>
         <option value="4">Biceps</option>
       </select>
-
       <button
         onClick={() => {
           const muscle = {

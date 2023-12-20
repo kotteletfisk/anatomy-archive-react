@@ -12,8 +12,8 @@ function CreateEntities() {
   }
 
   return (
-    <div className="container">
-      <h1>CreateEntities</h1>
+    <>
+      <h1 style={{ textAlign: "center" }}>Create Entities</h1>
 
       <div className="card-container">
         <div
@@ -36,8 +36,8 @@ function CreateEntities() {
         </div>
       </div>
 
-      <div className="container-form">{form}</div>
-    </div>
+      <div className="container-form card">{form}</div>
+    </>
   );
 }
 

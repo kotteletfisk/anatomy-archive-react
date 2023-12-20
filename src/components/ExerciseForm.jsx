@@ -33,7 +33,6 @@ function ExerciseForm({ submit }) {
         placeholder="Enter description"
         ref={descriptionRef}
       />
-
       <label htmlFor="mediaPath">MediaPath</label>
       <input
         type="text"
@@ -41,7 +40,6 @@ function ExerciseForm({ submit }) {
         placeholder="Enter mediaPath"
         ref={mediaPathRef}
       />
-
       <label htmlFor="intensity">Intensity</label>
       <input
         type="number"
@@ -49,9 +47,8 @@ function ExerciseForm({ submit }) {
         placeholder="Enter intensity"
         ref={intensityRef}
       />
-
-      <label htmlFor="type">Type</label>
-      <select id="type" ref={typeRef}>
+      <label htmlFor="select-type">Type</label>
+      <select id="select-type" ref={typeRef}>
         {typsOptions.map((type) => {
           return (
             <option key={type.id} value={type.id}>
@@ -61,78 +58,82 @@ function ExerciseForm({ submit }) {
         })}
       </select>
 
-      {/* Muscles */}
-      <div className="card">
-        <label htmlFor="muscles">Muscles</label> <br />
-        <select id="muscles" multiple>
-          {muscleOptions.map((muscle) => {
+      <div id="exercise-form-cards-grid">
+        {/* Muscles */}
+        <div className="card">
+          <label htmlFor="muscles">Muscles</label>
+          <select id="muscles" multiple>
+            {muscleOptions.map((muscle) => {
+              return (
+                <option
+                  key={muscle.id}
+                  onClick={() => {
+                    setSelectMuscles([...selectMuscles, muscle]);
+                  }}
+                >
+                  {muscle.name}
+                </option>
+              );
+            })}
+          </select>
+          <p>Options: </p>
+          {selectMuscles.map((muscle, index) => {
             return (
-              <option
-                key={muscle.id}
-                onClick={() => {
-                  setSelectMuscles([...selectMuscles, muscle]);
-                }}
-              >
+              <div key={index}>
                 {muscle.name}
-              </option>
+                <button
+                  onClick={() => {
+                    setSelectMuscles(
+                      selectMuscles.filter(
+                        (muscleName) => muscleName !== muscle
+                      )
+                    );
+                  }}
+                >
+                  x
+                </button>
+              </div>
             );
           })}
-        </select>
-        <p>Options: </p>
-        {selectMuscles.map((muscle, index) => {
-          return (
-            <div key={index}>
-              {muscle.name}
-              <button
-                onClick={() => {
-                  setSelectMuscles(
-                    selectMuscles.filter((muscleName) => muscleName !== muscle)
-                  );
-                }}
-              >
-                x
-              </button>
-            </div>
-          );
-        })}
-      </div>
+        </div>
 
-      {/* Equipment */}
-      <div className="card">
-        <label htmlFor="equipment">Equipment</label>
-        <select id="equipment" multiple>
-          {equipmentOptions.map((equipment) => {
+        {/* Equipment */}
+        <div className="card">
+          <label htmlFor="equipment">Equipment</label>
+          <select id="equipment" multiple>
+            {equipmentOptions.map((equipment) => {
+              return (
+                <option
+                  key={equipment.id}
+                  onClick={() => {
+                    setSelectEquipment([...selectEquipment, equipment]);
+                  }}
+                >
+                  {equipment.name}
+                </option>
+              );
+            })}
+          </select>
+          <p>Options: </p>
+          {selectEquipment.map((equipment, index) => {
             return (
-              <option
-                key={equipment.id}
-                onClick={() => {
-                  setSelectEquipment([...selectEquipment, equipment]);
-                }}
-              >
+              <div key={index}>
                 {equipment.name}
-              </option>
+                <button
+                  onClick={() => {
+                    setSelectEquipment(
+                      selectEquipment.filter(
+                        (equipmentName) => equipmentName !== equipment
+                      )
+                    );
+                  }}
+                >
+                  x
+                </button>
+              </div>
             );
           })}
-        </select>
-        <p>Options: </p>
-        {selectEquipment.map((equipment, index) => {
-          return (
-            <div key={index}>
-              {equipment.name}
-              <button
-                onClick={() => {
-                  setSelectEquipment(
-                    selectEquipment.filter(
-                      (equipmentName) => equipmentName !== equipment
-                    )
-                  );
-                }}
-              >
-                x
-              </button>
-            </div>
-          );
-        })}
+        </div>
       </div>
 
       {/* submit */}
