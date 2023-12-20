@@ -106,6 +106,12 @@ th {
   margin: 10px;
 }
 
+.title {
+  font-size: 3.2em;
+  line-height: 0.6;
+  text-shadow: 3px 3px 5px #1a1a1a;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -345,3 +351,16 @@ p {
   align-items: start;
   margin: 10px;
 }
+
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5em;
+    line-height: 1em;
+  } 
+  .title {
+    font-size: 2.5em;
+    line-height: 1em;
+  }
+}
+
