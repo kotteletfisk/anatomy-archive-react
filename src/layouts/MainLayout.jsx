@@ -1,13 +1,15 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
+import AuthContext from "../components/AuthContext";
 
 function MainLayout() {
   const location = useLocation();
   const navbar = useRef(null);
   const [navOffsetTop, setNavOffsetTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   function showContent() {
     if (location.pathname === "/") {
@@ -50,6 +52,8 @@ function MainLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
+          {isLoggedIn ? <NavLink to="/admin-page">Admin</NavLink> : null}
+
           <NavLink onClick={toggleModal}>
             <img src="/src/assets/loginLock.png" width={20} height={20} />
           </NavLink>
