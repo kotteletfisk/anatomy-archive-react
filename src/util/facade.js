@@ -128,9 +128,6 @@ function fetchData(url, callback, method, body) {
       editExercise(exercise);
     } else {
         // POST
-        //SLET MIG
-        exercise.id = Math.random().toString(36).substr(2, 9);
-        //SLET MIG ^
       createExercise(exercise);
     }
   }
