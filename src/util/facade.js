@@ -126,29 +126,43 @@ function createExercise(exercise) {
   );
 }
 
+function mutateSomething(entityType, entity) {
+  switch (entityType) {
+    case "exercise":
+      mutateExercise(entity);
+      break;
+    /*case "muscle":
+          mutateMuscle(something);
+          break;
+          case "equipment":
+            mutateEquipment(something);
+            break;
+            */
+  }
+}
+
 function mutateExercise(exercise) {
-  if (
-    exercise.id !== undefined &&
-    exercise.id !== null &&
-    exercise.id !== "" &&
-    exercise.id !== 0 &&
-    exercise.id !== "0" &&
-    exercise.id !== "undefined" &&
-    exercise.id !== "null" &&
-    exercise.id !== "NaN" &&
-    exercise.id !== NaN &&
-    exercise.id !== "false" &&
-    exercise.id !== false &&
-    exercise.id !== "NaN"
-  ) {
+  if (typeof exercise.id === "number" && exercise.id > 0) {
     // PUT
     editExercise(exercise);
   } else {
     // POST
-    //SLET MIG
-    exercise.id = Math.random().toString(36).substr(2, 9);
-    //SLET MIG ^
     createExercise(exercise);
+  }
+}
+
+function getSomethingById(entity, id, callback) {
+  switch (entity) {
+    case "exercise":
+      getExerciseById(id, callback);
+      break;
+    /*case "muscle":
+          getMuscleById(id, callback);
+          break;
+          case "equipment":
+            getEquipmentById(id, callback);
+            break;
+            */
   }
 }
 
@@ -213,8 +227,10 @@ export const crud = {
   getAllMuscles,
   getAllEquipment,
   mutateExercise,
+  mutateSomething,
   getExercises,
   getExerciseById,
+  getSomethingById,
   deleteExerciseById,
   fetchData,
 };
