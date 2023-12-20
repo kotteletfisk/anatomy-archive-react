@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { auth } from "../util/facade";
 import AuthContext from "./AuthContext";
 
-function LoginModal({ closeModal }) {
+function LoginModal({ toggleModal }) {
   const init = {
     username: "",
     password: "",
@@ -20,7 +20,7 @@ function LoginModal({ closeModal }) {
     e.preventDefault();
     console.log("perform login");
     auth.login(credentials.username, credentials.password, setIsLoggedIn, setError);
-    console.log(error)
+    toggleModal();
   }
 
   function performLogout(e) {
@@ -33,7 +33,7 @@ function LoginModal({ closeModal }) {
     <div className="modal-bg">
       <div className="modal-box">
         <div className="modal-close">
-          <button onClick={() => closeModal()}>X</button>
+          <button onClick={() => toggleModal()}>X</button>
         </div>
         {isLoggedIn ? (
           <div className="container">
