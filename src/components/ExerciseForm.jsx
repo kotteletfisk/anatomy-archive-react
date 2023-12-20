@@ -66,13 +66,14 @@ function ExerciseForm({ submit }) {
         <option>Stretching</option>
       </select>
 
+      {/* Muscles */}
       <div className="card">
         <label htmlFor="muscles">Muscles</label> <br />
         <select id="muscles" multiple>
-          {muscleOptions.map((muscle) => {
+          {muscleOptions.map((muscle, index) => {
             return (
               <option
-                key={crypto.randomUUID}
+                key={index}
                 onClick={() => {
                   setSelectMuscles([...selectMuscles, muscle]);
                 }}
@@ -101,13 +102,14 @@ function ExerciseForm({ submit }) {
         })}
       </div>
 
+      {/* Equipment */}
       <div className="card">
         <label htmlFor="equipment">Equipment</label>
         <select id="equipment" multiple>
-          {equipmentOptions.map((equipment) => {
+          {equipmentOptions.map((equipment, index) => {
             return (
               <option
-                key={crypto.randomUUID}
+                key={index}
                 onClick={() => {
                   setSelectEquipment([...selectEquipment, equipment]);
                 }}
@@ -138,6 +140,7 @@ function ExerciseForm({ submit }) {
         })}
       </div>
 
+      {/* submit */}
       <button
         onClick={() => {
           const exercise = {
