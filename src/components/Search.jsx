@@ -29,7 +29,7 @@ function Search() {
 
     return ( 
         <div className="container">
-            <SearchBar active={active} setActive={setActive} setSearchInput={setSearchInput}/>
+            <SearchBar active={active} setEntity={setEntity} setActive={setActive} setSearchInput={setSearchInput}/>
             <SearchResults results={results}/>
         </div>
      );

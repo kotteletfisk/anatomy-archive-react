@@ -1,16 +1,26 @@
 import { useState } from "react";
 
-function SearchBar({ active, setActive, setSearchInput }) {
-  const reset = {
-    name: "card",
+function SearchBar({ active, setEntity, setActive, setSearchInput }) {
+  const resetActive = {
+    byExercise: "card",
+    byMuscle: "card",
+    byEquipment: "card",
+  };
+  const resetEntity = {
+    exercise: "card",
     muscle: "card",
     equipment: "card",
   };
 
-  const [styles, setStyles] = useState({...reset, ["name"]: "card-active"});
+  const [activestyles, setActiveStyles] = useState({...resetActive, ["byExercise"]: "card-active"});
+  const [entityStyles, setEntityStyles] = useState({...resetEntity, ["exercise"]: "card-active"});
 
-  function manageStyle(name) {
-    setStyles((prevStyles) => ({ ...reset, [name]: "card-active" }));
+  function manageActiveStyle(name) {
+    setActiveStyles((prevStyles) => ({ ...resetActive, [name]: "card-active" }));
+  }
+
+  function manageEntityStyle(name) {
+    setEntityStyles((prevStyles) => ({ ...resetEntity, [name]: "card-active" }));
   }
 
   function updateInput(e) {
@@ -21,28 +31,58 @@ function SearchBar({ active, setActive, setSearchInput }) {
     <div className="container">
       <div className="card-container">
         <div
-          className={styles.name}
+          className={entityStyles.exercise}
           onClick={() => {
-            setActive("byName");
-            manageStyle("name");
+            setEntity("exercise");
+            manageEntityStyle("exercise");
           }}
         >
-          <h3>Search by name</h3>
+          <h3>Search exercises</h3>
         </div>
         <div
-          className={styles.muscle}
+          className={entityStyles.muscle}
+          onClick={() => {
+            setEntity("muscle");
+            manageEntityStyle("muscle");
+          }}
+        >
+          <h3>Search muscle</h3>
+        </div>
+        <div
+          className={entityStyles.equipment}
+          onClick={() => {
+            setEntity("equipment");
+            manageEntityStyle("equipment");
+          }}
+        >
+          <h3>Search equipment</h3>
+        </div>
+      </div>
+      
+      <div className="card-container">
+        <div
+          className={activestyles.byExercise}
+          onClick={() => {
+            setActive("byName");
+            manageActiveStyle("byExercise");
+          }}
+        >
+          <h3>Search by exercise</h3>
+        </div>
+        <div
+          className={activestyles.byMuscle}
           onClick={() => {
             setActive("byMuscle");
-            manageStyle("muscle");
+            manageActiveStyle("byMuscle");
           }}
         >
           <h3>Search by muscle</h3>
         </div>
         <div
-          className={styles.equipment}
+          className={activestyles.byEquipment}
           onClick={() => {
             setActive("byEquipment");
-            manageStyle("equipment");
+            manageActiveStyle("byEquipment");
           }}
         >
           <h3>Search by equipment</h3>
