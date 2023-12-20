@@ -7,7 +7,7 @@ function Search() {
     // Master component for search page.
     // controls state of search bar and search results
     const [active, setActive] = useState("byName");
-    const [entity, setEntity] = useState("muscle");
+    const [entity, setEntity] = useState("exercise");
     const [results, setResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 
@@ -30,7 +30,7 @@ function Search() {
     return ( 
         <div className="container">
             <SearchBar active={active} setEntity={setEntity} setActive={setActive} setSearchInput={setSearchInput}/>
-            <SearchResults results={results}/>
+            <SearchResults results={results} entity={entity}/>
         </div>
      );
 }

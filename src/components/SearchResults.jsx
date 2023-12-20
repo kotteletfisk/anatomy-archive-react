@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DisplayResultsSearch from "./DisplayResultsSearch";
 
-function SearchResults({ results }) {
+function SearchResults({ results, entity }) {
   const [loadDots, setLoadDots] = useState("");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function SearchResults({ results }) {
           <p style={{ textAlign: "center" }}>No results {loadDots}</p>
         </div>
       ) : (
-        <DisplayResultsSearch data={results} />
+        <DisplayResultsSearch data={results} entity={entity} />
       )}
     </div>
   );
