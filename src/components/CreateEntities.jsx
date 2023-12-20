@@ -36,7 +36,7 @@ function CreateEntities() {
         </div>
       </div>
 
-      <div className="container-form card">{form}</div>
+      {form && <div className="container-form card">{form}</div>}
     </>
   );
 }

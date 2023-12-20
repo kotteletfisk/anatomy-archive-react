@@ -7,10 +7,10 @@ function MuscleForm({ submit }) {
   const mediaPathRef = useRef();
   const muscleGroupRef = useRef();
 
-  // const [muscleOptions, setMuscleOptions] = useState([]);
+  const [muscleGroupOptions, setMuscleGroupOptions] = useState([]);
 
   useEffect(() => {
-    // crud.getAllMusclegroups(setMuscleOptions);
+    crud.getAllMusclegroups(setMuscleGroupOptions);
   }, []);
 
   return (
@@ -34,18 +34,13 @@ function MuscleForm({ submit }) {
       />
       <label htmlFor="select-type">Muscle Group</label>
       <select id="select-type" ref={muscleGroupRef}>
-        {/* {muscleOptions.map((muscle) => {
+        {muscleGroupOptions.map((muscle) => {
           return (
             <option key={muscle.id} value={muscle.id}>
               {muscle.name}
             </option>
           );
-        })} */}
-
-        <option value="1">Chest</option>
-        <option value="2">Back</option>
-        <option value="3">Shoulders</option>
-        <option value="4">Biceps</option>
+        })}
       </select>
       <button
         onClick={() => {

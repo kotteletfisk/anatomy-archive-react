@@ -12,12 +12,12 @@ function ExerciseForm({ submit }) {
   const [selectEquipment, setSelectEquipment] = useState([]);
   const [muscleOptions, setMuscleOptions] = useState([]);
   const [equipmentOptions, setEquipmentOptions] = useState([]);
-  const [typsOptions, setTypsOptions] = useState([]);
+  const [typeOptions, setTypeOptions] = useState([]);
 
   useEffect(() => {
     crud.getAllMuscles(setMuscleOptions);
     crud.getAllEquipment(setEquipmentOptions);
-    crud.getAllExerciseTypes(setTypsOptions);
+    crud.getAllExerciseTypes(setTypeOptions);
   }, []);
 
   return (
@@ -45,11 +45,13 @@ function ExerciseForm({ submit }) {
         type="number"
         id="intensity"
         placeholder="Enter intensity"
+        min={0}
+        max={10}
         ref={intensityRef}
       />
       <label htmlFor="select-type">Type</label>
       <select id="select-type" ref={typeRef}>
-        {typsOptions.map((type) => {
+        {typeOptions.map((type) => {
           return (
             <option key={type.id} value={type.id}>
               {type.typeName}
@@ -68,7 +70,10 @@ function ExerciseForm({ submit }) {
                 <option
                   key={muscle.id}
                   onClick={() => {
-                    setSelectMuscles([...selectMuscles, muscle]);
+                    if (!selectMuscles.includes(muscle)) {
+                      setSelectMuscles([...selectMuscles, muscle]);
+                    }
+                    manageEntityStyle("muscle");
                   }}
                 >
                   {muscle.name}
@@ -106,7 +111,9 @@ function ExerciseForm({ submit }) {
                 <option
                   key={equipment.id}
                   onClick={() => {
-                    setSelectEquipment([...selectEquipment, equipment]);
+                    if (!selectEquipment.includes(equipment)) {
+                      setSelectEquipment([...selectEquipment, equipment]);
+                    }
                   }}
                 >
                   {equipment.name}
