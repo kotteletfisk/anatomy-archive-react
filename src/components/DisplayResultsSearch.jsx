@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DetailModal from "./DetailModal";
 
-function DisplayResultsSearch({ data }) {
+function DisplayResultsSearch({ data, entity }) {
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState(null);
 
@@ -32,7 +32,7 @@ function DisplayResultsSearch({ data }) {
 
       {showModal ? (
         <div>
-          <DetailModal closeModal={handleClicked} data={modalData} />
+          <DetailModal closeModal={handleClicked} data={modalData} entity={entity} />
         </div>
       ) : null}
     </div>

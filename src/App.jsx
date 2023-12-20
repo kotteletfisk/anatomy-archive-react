@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import LoginModal from "./components/LoginModal";
 import DetailComponent from "./pages/DetailComponent";
 import AdminPage from "./pages/AdminPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
   const routes = createBrowserRouter(
@@ -19,6 +20,8 @@ function App() {
         <Route path="/login" element={<LoginModal />} />
         <Route path="/admin-page" element={<AdminPage />} />
         <Route path="/exercises/:id" element={<DetailComponent />} />
+        <Route path="/EditPage/:entity/:id" element={<EditPage />} />
+        <Route path="/AdminPage" element={<AdminPage />} />
       </Route>
     )
   );
