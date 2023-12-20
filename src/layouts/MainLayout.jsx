@@ -50,7 +50,6 @@ function MainLayout() {
       <div id="nav-bar" ref={navbar}>
         <div id="nav-items">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/test">Test</NavLink>
           <NavLink to="/search">Search</NavLink>
           {isLoggedIn ? <NavLink to="/admin-page">Admin</NavLink> : null}
 
