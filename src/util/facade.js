@@ -28,8 +28,8 @@ const MOCK_URL = "http://localhost:3000";
 const APIURL = "http://localhost:7070";
 // APIURL + EXERCISE
 const EXERCISEURL = `${APIURL}/exercise`;
-const MUSCLEURL = `${APIURL}/muscle`;
 const AUTHENTICATION_ROUTE = "/auth/login";
+const MUSCLEURL = `${APIURL}/muscle`;
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
@@ -193,6 +193,28 @@ function deleteExerciseById(exerciseId) {
   // delete from exercises array via setexercises()
 }
 
+export const crud = {
+  mutateExercise,
+  mutateSomething,
+  getExercises,
+  getExerciseById,
+  getSomethingById,
+  deleteExerciseById,
+  fetchData,
+  getAllMusclegroups,
+  getAllExerciseTypes,
+  getAllMuscles,
+  getAllEquipment,
+};
+
+export const auth = {
+  login,
+  logout,
+  getToken,
+  getUserRoles,
+  hasUserAccess,
+};
+
 function getAllMuscles(callback) {
   fetchData(`${MUSCLEURL}/`, callback, "GET");
 }
@@ -220,25 +242,3 @@ function getAllMusclegroups(callback) {
     "GET"
   );
 }
-
-export const crud = {
-  getAllMusclegroups,
-  getAllExerciseTypes,
-  getAllMuscles,
-  getAllEquipment,
-  mutateExercise,
-  mutateSomething,
-  getExercises,
-  getExerciseById,
-  getSomethingById,
-  deleteExerciseById,
-  fetchData,
-};
-
-export const auth = {
-  login,
-  logout,
-  getToken,
-  getUserRoles,
-  hasUserAccess,
-};
