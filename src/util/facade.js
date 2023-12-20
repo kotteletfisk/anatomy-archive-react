@@ -50,7 +50,7 @@ const handleHttpErrors = (res) => {
   return res.json();
 };
 
-const login = (user, pass, callback, errorCallback) => {
+const login = (user, pass, callback) => {
   const payLoad = { username: user, password: pass };
   const options = makeOptions("POST", payLoad);
 
@@ -62,8 +62,11 @@ const login = (user, pass, callback, errorCallback) => {
     })
     .catch((err) => {
       if (err.status) {
-        err.fullError.then((e) => errorCallback(e.message));
-        return Promise.reject({ status: err.status, fullError: err.fullError });
+        // err.fullError.then((e) => errorCallback(e.message));
+        // return Promise.reject({ status: err.status, message: err.message });
+        return err.fullError.then((e) =>
+          Promise.reject({ status: e.status, message: e.message })
+        );
       } else {
         console.log("Network error");
         errorCallback("Network error");
@@ -140,7 +143,6 @@ function mutateSomething(entityType, entity) {
             */
   }
 }
-
 
 function mutateExercise(exercise) {
   if (typeof exercise.id === "number" && exercise.id > 0) {

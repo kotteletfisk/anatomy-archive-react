@@ -23,12 +23,11 @@ function LoginModal({ toggleModal }) {
       credentials.username,
       credentials.password,
       setIsLoggedIn,
-      setError
     ).then(() => {
         console.log("logged in");
         toggleModal();
     })
-    .catch((err) => {});
+    .catch((err) => setError(err.message));
   }
 
   function performLogout(e) {
