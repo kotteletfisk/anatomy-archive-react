@@ -43,7 +43,7 @@ function MainLayout() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Anatomy Archive</h1>
+      <h1 className="title" style={{ textAlign: "center" }}>Anatomy Archive</h1>
 
       <div id="nav-bar" ref={navbar}>
         <div id="nav-items">
