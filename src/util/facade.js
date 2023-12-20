@@ -29,6 +29,7 @@ const APIURL = "http://localhost:7070";
 // APIURL + EXERCISE
 const EXERCISEURL = `${APIURL}/exercise`;
 const AUTHENTICATION_ROUTE = "/auth/login";
+const MUSCLEURL = `${APIURL}/muscle`;
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
@@ -53,7 +54,6 @@ const handleHttpErrors = (res) => {
 const login = (user, pass, callback) => {
   const payLoad = { username: user, password: pass };
   const options = makeOptions("POST", payLoad);
-
   return fetch(APIURL + AUTHENTICATION_ROUTE, options)
     .then(handleHttpErrors)
     .then((data) => {
@@ -109,14 +109,7 @@ const hasUserAccess = (neededRole, loggedIn) => {
 };
 
 function editExercise(exercise) {
-  fetchData(
-    `${EXERCISEURL}/${exercise.id}`,
-    () => {
-      // You can handle the callback logic here if needed
-    },
-    "PUT",
-    exercise
-  );
+  fetchData(`${EXERCISEURL}/${exercise.id}`, () => {}, "PUT", exercise);
 }
 
 function createExercise(exercise) {
@@ -204,6 +197,10 @@ export const crud = {
   getSomethingById,
   deleteExerciseById,
   fetchData,
+  getAllMusclegroups,
+  getAllExerciseTypes,
+  getAllMuscles,
+  getAllEquipment,
 };
 
 export const auth = {
@@ -213,3 +210,31 @@ export const auth = {
   getUserRoles,
   hasUserAccess,
 };
+
+function getAllMuscles(callback) {
+  fetchData(`${MUSCLEURL}/`, callback, "GET");
+}
+
+function getAllEquipment(callback) {
+  fetchData(
+    `http://localhost:7070/search/equipment/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
+
+function getAllExerciseTypes(callback) {
+  fetchData(
+    `http://localhost:7070/search/type/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
+
+function getAllMusclegroups(callback) {
+  fetchData(
+    `http://localhost:7070/search/musclegroup/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
