@@ -123,7 +123,7 @@ function fetchData(url, callback, method, body) {
   }
   
   function mutateExercise(exercise) {
-    if (exercise.id !== undefined && exercise.id !== null && exercise.id !== "" && exercise.id !== 0 && exercise.id !== "0" && exercise.id !== "undefined" && exercise.id !== "null" && exercise.id !== "NaN" && exercise.id !== NaN && exercise.id !== "false" && exercise.id !== false && exercise.id !== "NaN") { 
+    if (typeof exercise.id === "number" && exercise.id > 0) { 
       // PUT
       editExercise(exercise);
     } else {
