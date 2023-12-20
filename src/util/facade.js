@@ -59,13 +59,14 @@ const login = (user, pass, callback, errorCallback) => {
     .then((data) => {
       callback(true);
       setToken(data.token);
-      console.log(data.token);
     })
     .catch((err) => {
       if (err.status) {
         err.fullError.then((e) => errorCallback(e.message));
+        return Promise.reject({ status: err.status, fullError: err.fullError });
       } else {
         console.log("Network error");
+        errorCallback("Network error");
       }
     });
 };

@@ -19,8 +19,16 @@ function LoginModal({ toggleModal }) {
   function performLogin(e) {
     e.preventDefault();
     console.log("perform login");
-    auth.login(credentials.username, credentials.password, setIsLoggedIn, setError);
-    toggleModal();
+    auth.login(
+      credentials.username,
+      credentials.password,
+      setIsLoggedIn,
+      setError
+    ).then(() => {
+        console.log("logged in");
+        toggleModal();
+    })
+    .catch((err) => {});
   }
 
   function performLogout(e) {
