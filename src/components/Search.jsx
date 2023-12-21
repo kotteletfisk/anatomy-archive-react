@@ -25,7 +25,7 @@ function Search() {
             return;
         }
         crud.fetchData(url, (data) => setResults(data), "GET");
-    }, [active, searchInput]);
+    }, [active, searchInput, entity]);
 
     return ( 
         <div className="container">

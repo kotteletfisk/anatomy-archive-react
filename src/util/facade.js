@@ -68,8 +68,7 @@ const login = (user, pass, callback) => {
           Promise.reject({ status: e.status, message: e.message })
         );
       } else {
-        console.log("Network error");
-        errorCallback("Network error");
+        return Promise.reject({ message: "Network error" });
       }
     });
 };
