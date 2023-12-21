@@ -294,11 +294,6 @@ function getSomethingById(entity, id, callback) {
     case "equipment":
       getEquipmentById(id, callback);
       break;
-      getMuscleById(id, callback);
-      break;
-    case "equipment":
-      getEquipmentById(id, callback);
-      break;
   }
 }
 
@@ -313,13 +308,9 @@ function deleteSomethingById(entity, id) {
     case "equipment":
       deleteEquipmentById(id);
       break;
-      deleteMuscleById(id);
-      break;
-    case "equipment":
-      deleteEquipmentById(id);
-      break;
   }
 }
+
 export const crud = {
   mutateExercise,
   mutateSomething,
