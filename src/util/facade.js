@@ -148,12 +148,7 @@ function getExerciseById(exerciseId, callback) {
   fetchData(
     `${EXERCISEURL}/${exerciseId}`,
     // callback
-    (data) => {
-      console.log(data);
-      //console.log APIURL and exerciseId
-      console.log(`${EXERCISEURL}/${exerciseId}`);
-      callback(data); // Pass the data to the provided callback function
-    },
+    callback,
     "GET"
   );
 }
