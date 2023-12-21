@@ -29,6 +29,7 @@ const APIURL = "http://localhost:7070";
 // APIURL + EXERCISE
 const EXERCISEURL = `${APIURL}/exercise`;
 const AUTHENTICATION_ROUTE = "/auth/login";
+const MUSCLEURL = `${APIURL}/muscle`;
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
@@ -50,22 +51,25 @@ const handleHttpErrors = (res) => {
   return res.json();
 };
 
-const login = (user, pass, callback, errorCallback) => {
+const login = (user, pass, callback) => {
   const payLoad = { username: user, password: pass };
   const options = makeOptions("POST", payLoad);
-
   return fetch(APIURL + AUTHENTICATION_ROUTE, options)
     .then(handleHttpErrors)
     .then((data) => {
       callback(true);
       setToken(data.token);
-      console.log(data.token);
     })
     .catch((err) => {
       if (err.status) {
-        err.fullError.then((e) => errorCallback(e.message));
+        // err.fullError.then((e) => errorCallback(e.message));
+        // return Promise.reject({ status: err.status, message: err.message });
+        return err.fullError.then((e) =>
+          Promise.reject({ status: e.status, message: e.message })
+        );
       } else {
         console.log("Network error");
+        errorCallback("Network error");
       }
     });
 };
@@ -105,14 +109,7 @@ const hasUserAccess = (neededRole, loggedIn) => {
 };
 
 function editExercise(exercise) {
-  fetchData(
-    `${EXERCISEURL}/${exercise.id}`,
-    () => {
-      // You can handle the callback logic here if needed
-    },
-    "PUT",
-    exercise
-  );
+  fetchData(`${EXERCISEURL}/${exercise.id}`, () => {}, "PUT", exercise);
 }
 
 function createExercise(exercise) {
@@ -123,6 +120,21 @@ function createExercise(exercise) {
     "POST",
     exercise
   );
+}
+
+function mutateSomething(entityType, entity) {
+  switch (entityType) {
+    case "exercise":
+      mutateExercise(entity);
+      break;
+    /*case "muscle":
+          mutateMuscle(something);
+          break;
+          case "equipment":
+            mutateEquipment(something);
+            break;
+            */
+  }
 }
 
 function mutateExercise(exercise) {
@@ -315,13 +327,6 @@ function deleteSomethingById(entity, id) {
             
   }
 }
-
-
-
-
-
-
-
 export const crud = {
   mutateExercise,
   mutateSomething,
@@ -333,6 +338,10 @@ export const crud = {
   deleteSomethingById,
   deleteExerciseById,
   fetchData,
+  getAllMusclegroups,
+  getAllExerciseTypes,
+  getAllMuscles,
+  getAllEquipment,
 };
 
 export const auth = {
@@ -342,3 +351,31 @@ export const auth = {
   getUserRoles,
   hasUserAccess,
 };
+
+function getAllMuscles(callback) {
+  fetchData(`${MUSCLEURL}/`, callback, "GET");
+}
+
+function getAllEquipment(callback) {
+  fetchData(
+    `http://localhost:7070/search/equipment/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
+
+function getAllExerciseTypes(callback) {
+  fetchData(
+    `http://localhost:7070/search/type/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
+
+function getAllMusclegroups(callback) {
+  fetchData(
+    `http://localhost:7070/search/musclegroup/byName?pattern=`,
+    callback,
+    "GET"
+  );
+}
