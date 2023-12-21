@@ -122,21 +122,6 @@ function createExercise(exercise) {
   );
 }
 
-function mutateSomething(entityType, entity) {
-  switch (entityType) {
-    case "exercise":
-      mutateExercise(entity);
-      break;
-    /*case "muscle":
-          mutateMuscle(something);
-          break;
-          case "equipment":
-            mutateEquipment(something);
-            break;
-            */
-  }
-}
-
 function mutateExercise(exercise) {
   if (typeof exercise.id === "number" && exercise.id > 0) {
     // PUT
