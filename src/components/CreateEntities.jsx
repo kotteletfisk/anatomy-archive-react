@@ -2,13 +2,13 @@ import { useState } from "react";
 import ExerciseForm from "./ExerciseForm";
 import MuscleForm from "./MuscleForm";
 import EquipmentForm from "./EquipmentForm";
+import { crud } from "../util/facade";
 
 function CreateEntities() {
   const [form, setForm] = useState(null);
 
-  function handleSubmission(data) {
-    console.log("Submitted");
-    console.table(data);
+  function handleSubmission(option, data) {
+    crud.mutateSomething(option, data);
   }
 
   return (

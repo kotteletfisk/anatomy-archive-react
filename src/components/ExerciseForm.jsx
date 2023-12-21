@@ -20,6 +20,8 @@ function ExerciseForm({ submit }) {
     crud.getAllExerciseTypes(setTypeOptions);
   }, []);
 
+  function validateForm(data) {}
+
   return (
     <>
       <h2>ExerciseForm</h2>
@@ -30,6 +32,8 @@ function ExerciseForm({ submit }) {
       <input
         type="text"
         id="Description"
+        minLength={1}
+        maxLength={255}
         placeholder="Enter description"
         ref={descriptionRef}
       />
@@ -37,6 +41,8 @@ function ExerciseForm({ submit }) {
       <input
         type="text"
         id="mediaPath"
+        minLength={1}
+        maxLength={255}
         placeholder="Enter mediaPath"
         ref={mediaPathRef}
       />
@@ -73,7 +79,6 @@ function ExerciseForm({ submit }) {
                     if (!selectMuscles.includes(muscle)) {
                       setSelectMuscles([...selectMuscles, muscle]);
                     }
-                    manageEntityStyle("muscle");
                   }}
                 >
                   {muscle.name}
@@ -155,7 +160,7 @@ function ExerciseForm({ submit }) {
             muscles: { selectMuscles },
             equipment: { selectEquipment },
           };
-          submit(exercise);
+          submit(exercise, "exercise");
         }}
       >
         Submit
