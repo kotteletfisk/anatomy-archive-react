@@ -50,7 +50,7 @@ function MuscleForm({ submit }) {
             mediaPath: mediaPathRef.current.value,
             muscleGroup: muscleGroupRef.current.value,
           };
-          submit(muscle);
+          submit("muscle", muscle);
         }}
       >
         Submit

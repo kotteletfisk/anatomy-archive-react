@@ -260,14 +260,18 @@ function deleteEquipmentById(equipmentId) {
 }
 
 function mutateSomething(entityType, entity) {
+  console.log("entityType", entityType, "entity", entity);
   switch (entityType) {
     case "exercise":
+      console.log("1");
       mutateExercise(entity);
       break;
     case "muscle":
+      console.log("2");
       mutateMuscle(entity);
       break;
     case "equipment":
+      console.log("3");
       mutateEquipment(entity);
       break;
   }
@@ -300,6 +304,7 @@ function deleteSomethingById(entity, id) {
       break;
   }
 }
+
 export const crud = {
   mutateExercise,
   mutateSomething,
@@ -326,12 +331,16 @@ export const auth = {
 };
 
 function getAllMuscles(callback) {
-  fetchData(`${MUSCLEURL}/`, callback, "GET");
+  fetchData(
+    `http://localhost:7070/search/muscle/bymuscle?pattern=`,
+    callback,
+    "GET"
+  );
 }
 
 function getAllEquipment(callback) {
   fetchData(
-    `http://localhost:7070/search/equipment/byName?pattern=`,
+    `http://localhost:7070/search/equipment/byequipment?pattern=`,
     callback,
     "GET"
   );
@@ -339,7 +348,7 @@ function getAllEquipment(callback) {
 
 function getAllExerciseTypes(callback) {
   fetchData(
-    `http://localhost:7070/search/type/byName?pattern=`,
+    `http://localhost:7070/search/type/bytype?pattern=`,
     callback,
     "GET"
   );
@@ -347,7 +356,7 @@ function getAllExerciseTypes(callback) {
 
 function getAllMusclegroups(callback) {
   fetchData(
-    `http://localhost:7070/search/musclegroup/byName?pattern=`,
+    `http://localhost:7070/search/musclegroup/bymusclegroup?pattern=`,
     callback,
     "GET"
   );
