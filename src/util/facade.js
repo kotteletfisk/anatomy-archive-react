@@ -122,21 +122,6 @@ function createExercise(exercise) {
   );
 }
 
-function mutateSomething(entityType, entity) {
-  switch (entityType) {
-    case "exercise":
-      mutateExercise(entity);
-      break;
-    /*case "muscle":
-          mutateMuscle(something);
-          break;
-          case "equipment":
-            mutateEquipment(something);
-            break;
-            */
-  }
-}
-
 function mutateExercise(exercise) {
   if (typeof exercise.id === "number" && exercise.id > 0) {
     // PUT
@@ -164,12 +149,7 @@ function getExerciseById(exerciseId, callback) {
   fetchData(
     `${EXERCISEURL}/${exerciseId}`,
     // callback
-    (data) => {
-      console.log(data);
-      //console.log APIURL and exerciseId
-      console.log(`${EXERCISEURL}/${exerciseId}`);
-      callback(data); // Pass the data to the provided callback function
-    },
+    callback,
     "GET"
   );
 }
