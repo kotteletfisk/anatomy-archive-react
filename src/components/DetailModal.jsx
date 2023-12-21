@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import EditPage from "../pages/EditPage";
 
-function DetailModal({ closeModal, data }) {
+function DetailModal({ closeModal, data, entity }) {
+
+
   const url = `/exercises/` + data.id;
+
+  const editUrl = `/EditPage/`+ entity + '/' + data.id;
+
+  //Send user to editPage with the data
 
   return (
     <div className="modal-bg">
@@ -23,6 +30,8 @@ function DetailModal({ closeModal, data }) {
           <Link to={url} onClick={closeModal}>
             See More ?
           </Link>
+
+        <Link to={editUrl} onClick={closeModal}> Edit </Link>
         </div>
       </div>
     </div>

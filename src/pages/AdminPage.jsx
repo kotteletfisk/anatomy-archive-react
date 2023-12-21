@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import FoundExerciseAdmin from "../components/FoundExerciseAdmin";
 import NoExerciseFoundAdmin from "../components/NoExerciseFoundAdmin";
 import { useState, useEffect } from "react";
+import CreateEntities from "../components/CreateEntities";
 
 function AdminPage() {
-  
   const blankExercise = {
     id: null,
     name: "",
@@ -24,12 +25,11 @@ function AdminPage() {
     <div>
       <h1>Add/Edit exercise</h1>
       {foundExercise ? (
-      <FoundExerciseAdmin
+        <FoundExerciseAdmin
           setFoundexercise={setFoundexercise}
           blankExercise={blankExercise}
           exerciseToEdit={exerciseToEdit}
           setExerciseToEdit={setExerciseToEdit}
-
         />
       ) : (
         <NoExerciseFoundAdmin
@@ -39,6 +39,8 @@ function AdminPage() {
           exerciseToEdit={exerciseToEdit}
         />
       )}
+
+      <CreateEntities />
     </div>
   );
 }
