@@ -125,22 +125,6 @@ function createExercise(exercise) {
   );
 }
 
-function mutateSomething(entityType, entity) {
-  switch (entityType) {
-    case "exercise":
-      mutateExercise(entity);
-      break;
-    /*case "muscle":
-          mutateMuscle(something);
-          break;
-          case "equipment":
-            mutateEquipment(something);
-            break;
-            */
-  }
-}
-
-
 function mutateExercise(exercise) {
   if (typeof exercise.id === "number" && exercise.id > 0) {
     // PUT
@@ -151,19 +135,16 @@ function mutateExercise(exercise) {
   }
 }
 
-function getSomethingById(entity, id, callback) {
-  switch (entity) {
-    case "exercise":
-      getExerciseById(id, callback);
-      break;
-    /*case "muscle":
-          getMuscleById(id, callback);
-          break;
-          case "equipment":
-            getEquipmentById(id, callback);
-            break;
-            */
-  }
+function getExercises(callback) {
+  // fetch data
+  fetchData(EXERCISEURL, callback);
+}
+
+function deleteExerciseById(exerciseId) {
+  // delete exercises from api
+  fetchData(`${EXERCISEURL}/${exerciseId}`, () => {}, "DELETE");
+
+  // delete from exercises array via setexercises()
 }
 
 function getExerciseById(exerciseId, callback) {
@@ -181,24 +162,175 @@ function getExerciseById(exerciseId, callback) {
   );
 }
 
-function getExercises(callback) {
+function getMuscleById(muscleId, callback) {
   // fetch data
-  fetchData(EXERCISEURL, callback);
+  fetchData(
+    `${APIURL}/muscle/${muscleId}`,
+    // callback
+    (data) => {
+      console.log(data);
+      //console.log APIURL and muscleId
+      console.log(`${APIURL}/muscle/${muscleId}`);
+      callback(data); // Pass the data to the provided callback function
+    },
+    "GET"
+  );
 }
 
-function deleteExerciseById(exerciseId) {
-  // delete exercises from api
-  fetchData(`${EXERCISEURL}/${exerciseId}`, () => {}, "DELETE");
-
-  // delete from exercises array via setexercises()
+function editMuscle(muscle) {
+  fetchData(
+    `${APIURL}/muscle/${muscle.id}`,
+    () => {
+      // You can handle the callback logic here if needed
+    },
+    "PUT",
+    muscle
+  );
 }
+
+function createMuscle(muscle) {
+  fetchData(
+    // URL, callback, method, body
+    `${APIURL}/muscle`,
+    () => {},
+    "POST",
+    muscle
+  );
+}
+
+function mutateMuscle(muscle) {
+  if (typeof muscle.id === "number" && muscle.id > 0) {
+    // PUT
+    editMuscle(muscle);
+  } else {
+    // POST
+    createMuscle(muscle);
+  }
+}
+
+function deleteMuscleById(muscleId) {
+  // delete muscle from api
+  fetchData(`${APIURL}/muscle/${muscleId}`, () => {}, "DELETE");
+
+  // delete from muscle array via setmuscles()
+}
+
+function getEquipmentById(equipmentId, callback) {
+  // fetch data
+  fetchData(
+    `${APIURL}/equipment/${equipmentId}`,
+    // callback
+    (data) => {
+      console.log(data);
+      //console.log APIURL and equipmentId
+      console.log(`${APIURL}/equipment/${equipmentId}`);
+      callback(data); // Pass the data to the provided callback function
+    },
+    "GET"
+  );
+}
+
+function editEquipment(equipment) {
+  fetchData(
+    `${APIURL}/equipment/${equipment.id}`,
+    () => {
+      // You can handle the callback logic here if needed
+    },
+    "PUT",
+    equipment
+  );
+}
+
+function createEquipment(equipment) {
+  fetchData(
+    // URL, callback, method, body
+    `${APIURL}/equipment`,
+    () => {},
+    "POST",
+    equipment
+  );
+}
+
+function mutateEquipment(equipment) {
+  if (typeof equipment.id === "number" && equipment.id > 0) {
+    // PUT
+    editEquipment(equipment);
+  } else {
+    // POST
+    createEquipment(equipment);
+  }
+}
+
+function deleteEquipmentById(equipmentId) {
+  // delete equipment from api
+  fetchData(`${APIURL}/equipment/${equipmentId}`, () => {}, "DELETE");
+
+  // delete from equipment array via setequipment()
+}
+
+
+
+
+function mutateSomething(entityType, entity) {
+  switch (entityType) {
+    case "exercise":
+      mutateExercise(entity);
+      break;
+    case "muscle":
+          mutateMuscle(entity);
+          break;
+          case "equipment":
+            mutateEquipment(entity);
+            break;
+            
+  }
+}
+
+function getSomethingById(entity, id, callback) {
+  switch (entity) {
+    case "exercise":
+      getExerciseById(id, callback);
+      break;
+    case "muscle":
+          getMuscleById(id, callback);
+          break;
+          case "equipment":
+            getEquipmentById(id, callback);
+            break;
+            
+  }
+}
+
+function deleteSomethingById(entity, id) {
+  switch (entity) {
+    case "exercise":
+      deleteExerciseById(id);
+      break;
+    case "muscle":
+          deleteMuscleById(id);
+          break;
+          case "equipment":
+            deleteEquipmentById(id);
+            break;
+            
+  }
+}
+
+
+
+
+
+
 
 export const crud = {
   mutateExercise,
   mutateSomething,
   getExercises,
   getExerciseById,
+  getMuscleById,
+  getEquipmentById,
   getSomethingById,
+  deleteSomethingById,
   deleteExerciseById,
   fetchData,
 };
