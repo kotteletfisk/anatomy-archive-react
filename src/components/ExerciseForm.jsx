@@ -20,8 +20,6 @@ function ExerciseForm({ submit }) {
     crud.getAllExerciseTypes(setTypeOptions);
   }, []);
 
-  function validateForm(data) {}
-
   return (
     <>
       <h2>ExerciseForm</h2>
@@ -160,7 +158,7 @@ function ExerciseForm({ submit }) {
             muscles: { selectMuscles },
             equipment: { selectEquipment },
           };
-          submit(exercise, "exercise");
+          submit("exercise", exercise);
         }}
       >
         Submit
