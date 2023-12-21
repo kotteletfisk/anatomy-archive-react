@@ -26,8 +26,7 @@ function LoginModal({ toggleModal }) {
     ).then(() => {
         console.log("logged in");
         toggleModal();
-    })
-    .catch((err) => setError(err.message));
+    }).catch((err) => setError(err.message));
   }
 
   function performLogout(e) {
