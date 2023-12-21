@@ -1,10 +1,11 @@
 import React from "react";
 
-function ExerciseEditForm({ details, handleChange, handleSubmit }) {
-  console.log("ExerciseEditForm", details);
+function MuscleEditForm({ details, handleChange, handleSubmit }) {
+  console.log("MuscleEditForm", details);
 
+  
   return (
-    <form className="exerciseForm" onSubmit={handleSubmit}>
+    <form className="muscleform" onSubmit={handleSubmit}>
       <div className="formcontent">
         <label className="formlabel" htmlFor="id">
           Id
@@ -57,24 +58,9 @@ function ExerciseEditForm({ details, handleChange, handleSubmit }) {
           onChange={(e) => handleChange(e, "mediaPath")}
         />
       </div>
-      <div className="formcontent">
-        <label className="formlabel" htmlFor="intensity">
-          Intensity
-        </label>
-        <input
-          className="forminput"
-          id="intensity"
-          type="number"
-          min={1}
-          max={10}
-          placeholder="intensity"
-          value={details.intensity}
-          onChange={(e) => handleChange(e, "intensity")}
-        />
-      </div>
       <button className="btn btn-primary">Submit</button>
     </form>
   );
 }
 
-export default ExerciseEditForm;
+export default MuscleEditForm;

@@ -12,7 +12,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
     equipment: "card",
   };
 
-  const [activestyles, setActiveStyles] = useState({...resetActive, ["byExercise"]: "card-active"});
+  const [activestyles, setActiveStyles] = useState({...resetActive, ["byexercise"]: "card-active"});
   const [entityStyles, setEntityStyles] = useState({...resetEntity, ["exercise"]: "card-active"});
 
   function manageActiveStyle(name) {
@@ -63,7 +63,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
         <div
           className={activestyles.byExercise}
           onClick={() => {
-            setActive("byName");
+            setActive("byexercise");
             manageActiveStyle("byExercise");
           }}
         >
@@ -72,7 +72,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
         <div
           className={activestyles.byMuscle}
           onClick={() => {
-            setActive("byMuscle");
+            setActive("bymuscle");
             manageActiveStyle("byMuscle");
           }}
         >
@@ -81,7 +81,7 @@ function SearchBar({ active, setEntity, setActive, setSearchInput }) {
         <div
           className={activestyles.byEquipment}
           onClick={() => {
-            setActive("byEquipment");
+            setActive("byequipment");
             manageActiveStyle("byEquipment");
           }}
         >
