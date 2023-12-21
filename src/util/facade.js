@@ -260,21 +260,17 @@ function deleteEquipmentById(equipmentId) {
   // delete from equipment array via setequipment()
 }
 
-
-
-
 function mutateSomething(entityType, entity) {
   switch (entityType) {
     case "exercise":
       mutateExercise(entity);
       break;
     case "muscle":
-          mutateMuscle(entity);
-          break;
-          case "equipment":
-            mutateEquipment(entity);
-            break;
-            
+      mutateMuscle(entity);
+      break;
+    case "equipment":
+      mutateEquipment(entity);
+      break;
   }
 }
 
@@ -284,12 +280,11 @@ function getSomethingById(entity, id, callback) {
       getExerciseById(id, callback);
       break;
     case "muscle":
-          getMuscleById(id, callback);
-          break;
-          case "equipment":
-            getEquipmentById(id, callback);
-            break;
-            
+      getMuscleById(id, callback);
+      break;
+    case "equipment":
+      getEquipmentById(id, callback);
+      break;
   }
 }
 
@@ -299,12 +294,11 @@ function deleteSomethingById(entity, id) {
       deleteExerciseById(id);
       break;
     case "muscle":
-          deleteMuscleById(id);
-          break;
-          case "equipment":
-            deleteEquipmentById(id);
-            break;
-            
+      deleteMuscleById(id);
+      break;
+    case "equipment":
+      deleteEquipmentById(id);
+      break;
   }
 }
 export const crud = {
