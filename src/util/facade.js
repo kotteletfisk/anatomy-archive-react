@@ -265,7 +265,6 @@ function deleteEquipmentById(equipmentId) {
 }
 
 function mutateSomething(entityType, entity) {
-  console.log("entityType", entityType, "entity", entity);
   switch (entityType) {
     case "exercise":
       console.log("1");
