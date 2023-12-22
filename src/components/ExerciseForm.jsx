@@ -10,6 +10,7 @@ function ExerciseForm({ submit }) {
 
   const [selectMuscles, setSelectMuscles] = useState([]);
   const [selectEquipment, setSelectEquipment] = useState([]);
+
   const [muscleOptions, setMuscleOptions] = useState([]);
   const [equipmentOptions, setEquipmentOptions] = useState([]);
   const [typeOptions, setTypeOptions] = useState([]);
@@ -30,6 +31,8 @@ function ExerciseForm({ submit }) {
       <input
         type="text"
         id="Description"
+        minLength={1}
+        maxLength={255}
         placeholder="Enter description"
         ref={descriptionRef}
       />
@@ -37,6 +40,8 @@ function ExerciseForm({ submit }) {
       <input
         type="text"
         id="mediaPath"
+        minLength={1}
+        maxLength={255}
         placeholder="Enter mediaPath"
         ref={mediaPathRef}
       />
@@ -73,7 +78,6 @@ function ExerciseForm({ submit }) {
                     if (!selectMuscles.includes(muscle)) {
                       setSelectMuscles([...selectMuscles, muscle]);
                     }
-                    manageEntityStyle("muscle");
                   }}
                 >
                   {muscle.name}
@@ -152,10 +156,16 @@ function ExerciseForm({ submit }) {
             mediaPath: mediaPathRef.current.value,
             intensity: intensityRef.current.value,
             type: typeRef.current.value,
-            muscles: { selectMuscles },
-            equipment: { selectEquipment },
+            muscles: {
+              connect: selectMuscles.map((muscle) => ({ id: muscle.id })),
+            },
+            equipment: {
+              connect: selectEquipment.map((equipment) => ({
+                id: equipment.id,
+              })),
+            },
           };
-          submit(exercise);
+          submit("exercise", exercise);
         }}
       >
         Submit

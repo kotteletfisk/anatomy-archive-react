@@ -25,8 +25,7 @@ function LoginModal({ toggleModal }) {
       setIsLoggedIn,
     ).then(() => {
         toggleModal();
-    })
-    .catch((err) => setError(err.message));
+    }).catch((err) => setError(err.message));
   }
 
   function performLogout(e) {

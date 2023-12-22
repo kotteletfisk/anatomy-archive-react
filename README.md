@@ -1,1 +1,1 @@
-# Frontend for the Anatomy Archive project
+# hFrontend for the Anatomy Archive project

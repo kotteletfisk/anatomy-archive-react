@@ -1,26 +1,20 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { crud } from "../util/facade";
+import ExerciseEditForm from "../components/ExerciseEditForm";
+import MuscleEditForm from "../components/MuscleEditForm";
+import EquipmentEditForm from "../components/EquipmentEditForm";
 
 function EditPage() {
-  const { id } = useParams();
+  const { id, entity } = useParams();
 
-  const [details, setDetails] = useState([]);
-
-  const {entity} = useParams();
+  const [details, setDetails] = useState(null);
 
   useEffect(() => {
     if (id > 0) {
-      crud.getSomethingById(entity,id, (d) => setDetails(d));
+      crud.getSomethingById(entity, id, (d) => setDetails(d));
     }
-  }, []);
-
-  function handleChange(event) {
-    const value = event.target.value;
-    const name = event.target.id;
-    setDetails({ ...details, [name]: value });
-  }
+  }, [id, entity]); // Include id and entity as dependencies
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -30,81 +24,42 @@ function EditPage() {
     });
   }
 
+  const handleChange = (e, field) => {
+    setDetails((prevDetails) => ({
+      ...prevDetails,
+      [field]: e.target.value,
+    }));
+  };
+
   return (
-    <div>
-      <h1>Edit Page</h1>
-      <form className="exerciseForm" onSubmit={handleSubmit}>
-        <div className="formcontent">
-          <label className="formlabel" htmlFor="id">
-            Id
-          </label>
-          <input
-            className="forminput"
-            id="id"
-            type="number"
-            readOnly
-            placeholder={details.id}
-            value={details.id}
-          />
-        </div>
-        <div className="formcontent">
-          <label className="formlabel" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="forminput"
-            id="name"
-            type="text"
-            placeholder="name"
-            value={details.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="formcontent">
-          <label className="formlabel" htmlFor="description">
-            Description
-          </label>
-          <input
-            className="forminput"
-            id="description"
-            type="text"
-            placeholder="description"
-            value={details.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="formcontent">
-          <label className="formlabel" htmlFor="mediaPath">
-            MediaPath
-          </label>
-          <input
-            className="forminput"
-            id="mediaPath"
-            type="text"
-            placeholder="mediaPath"
-            value={details.mediaPath}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="formcontent">
-          <label className="formlabel" htmlFor="intensity">
-            Intensity
-          </label>
-          <input
-            className="forminput"
-            id="intensity"
-            type="number"
-            min={1}
-            max={10}
-            placeholder="intensity"
-            value={details.intensity}
-            onChange={handleChange}
-          />
-        </div>
-        <button className="btn btn-primary">Submit</button>
-      </form>
-    </div>
+    <>
+      <h1 style={{ textAlign: "center" }}>Edit {entity}</h1>
+      {details !== null && entity === "exercise" && (
+        <ExerciseEditForm
+          details={details}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
+      {details !== null && entity === "muscle" && (
+        <MuscleEditForm
+          details={details}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
+      {details !== null && entity === "equipment" && (
+        <EquipmentEditForm
+          details={details}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      )}
+    </>
   );
 }
+
 
 export default EditPage;

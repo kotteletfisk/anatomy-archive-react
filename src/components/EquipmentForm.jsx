@@ -34,7 +34,7 @@ function EquipmentForm({ submit }) {
             description: descriptionRef.current.value,
             mediaPath: mediaPathRef.current.value,
           };
-          submit(quipment);
+          submit("equipment", quipment);
         }}
       >
         Submit
