@@ -21,7 +21,6 @@ function App() {
         <Route path="/admin-page" element={<AdminPage />} />
         <Route path="/exercises/:id" element={<DetailComponent />} />
         <Route path="/EditPage/:entity/:id" element={<EditPage />} />
-        <Route path="/AdminPage" element={<AdminPage />} />
       </Route>
     )
   );

@@ -48,7 +48,7 @@ function MuscleForm({ submit }) {
             name: nameRef.current.value,
             description: descriptionRef.current.value,
             mediaPath: mediaPathRef.current.value,
-            muscleGroup: muscleGroupRef.current.value,
+            muscleGroupId: muscleGroupRef.current.value,
           };
           submit("muscle", muscle);
         }}

@@ -112,13 +112,50 @@ function editExercise(exercise) {
 }
 
 function createExercise(exercise) {
+  const newExercise = {
+    name: exercise.name,
+    description: exercise.description,
+    mediaPath: exercise.mediaPath,
+    intensity: exercise.intensity,
+  };
+
+  const muscleIds = exercise.muscles.connect
+    .map((muscle) => muscle.id)
+    .join(",");
+  const equipmentIds = exercise.equipment.connect
+    .map((equipment) => equipment.id)
+    .join(",");
+
   fetchData(
     // URL, callback, method, body
     EXERCISEURL,
-    () => {},
+    callback,
     "POST",
-    exercise
+    newExercise
   );
+
+  function callback(data) {
+    const newData = data;
+    console.log("yo this is new data", newData);
+
+    fetchData(
+      `http://localhost:7070/exercise/muscle?exerciseId=${newData.id}&muscleId=${muscleIds}`,
+      () => {},
+      "POST"
+    );
+
+    fetchData(
+      `http://localhost:7070/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
+      () => {},
+      "POST"
+    );
+
+    fetchData(
+      `http://localhost:7070/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
+      () => {},
+      "POST"
+    );
+  }
 }
 
 function mutateExercise(exercise) {
@@ -180,6 +217,7 @@ function editMuscle(muscle) {
 }
 
 function createMuscle(muscle) {
+  console.log(muscle);
   fetchData(
     // URL, callback, method, body
     `${APIURL}/muscle`,
@@ -260,18 +298,14 @@ function deleteEquipmentById(equipmentId) {
 }
 
 function mutateSomething(entityType, entity) {
-  console.log("entityType", entityType, "entity", entity);
   switch (entityType) {
     case "exercise":
-      console.log("1");
       mutateExercise(entity);
       break;
     case "muscle":
-      console.log("2");
       mutateMuscle(entity);
       break;
     case "equipment":
-      console.log("3");
       mutateEquipment(entity);
       break;
   }

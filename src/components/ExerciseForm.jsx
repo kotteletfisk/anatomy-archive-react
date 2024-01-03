@@ -10,6 +10,7 @@ function ExerciseForm({ submit }) {
 
   const [selectMuscles, setSelectMuscles] = useState([]);
   const [selectEquipment, setSelectEquipment] = useState([]);
+
   const [muscleOptions, setMuscleOptions] = useState([]);
   const [equipmentOptions, setEquipmentOptions] = useState([]);
   const [typeOptions, setTypeOptions] = useState([]);
@@ -155,8 +156,14 @@ function ExerciseForm({ submit }) {
             mediaPath: mediaPathRef.current.value,
             intensity: intensityRef.current.value,
             type: typeRef.current.value,
-            muscles: { selectMuscles },
-            equipment: { selectEquipment },
+            muscles: {
+              connect: selectMuscles.map((muscle) => ({ id: muscle.id })),
+            },
+            equipment: {
+              connect: selectEquipment.map((equipment) => ({
+                id: equipment.id,
+              })),
+            },
           };
           submit("exercise", exercise);
         }}
