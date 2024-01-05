@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { crud } from "../util/facade";
 import ExerciseEditForm from "../components/ExerciseEditForm";
@@ -60,6 +60,5 @@ function EditPage() {
     </>
   );
 }
-
 
 export default EditPage;
