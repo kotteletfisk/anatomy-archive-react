@@ -357,23 +357,15 @@ export const auth = {
 };
 
 function getAllMuscles(callback) {
-  fetchData(
-    `http://${APIURL}/search/muscle/bymuscle?pattern=`,
-    callback,
-    "GET"
-  );
+  fetchData(`${APIURL}/search/muscle/bymuscle?pattern=`, callback, "GET");
 }
 
 function getAllEquipment(callback) {
-  fetchData(
-    `http://${APIURL}/search/equipment/byequipment?pattern=`,
-    callback,
-    "GET"
-  );
+  fetchData(`${APIURL}/search/equipment/byequipment?pattern=`, callback, "GET");
 }
 
 function getAllExerciseTypes(callback) {
-  fetchData(`http://${APIURL}/search/type/bytype?pattern=`, callback, "GET");
+  fetchData(`${APIURL}/search/type/bytype?pattern=`, callback, "GET");
 }
 
 function getAllMusclegroups(callback) {
