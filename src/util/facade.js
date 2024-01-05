@@ -141,11 +141,13 @@ function createExercise(exercise) {
       "POST"
     );
 
-    fetchData(
-      `${APIURL}/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
-      () => {},
-      "POST"
-    );
+    if (exercise.equipment.connect.length > 0) {
+      fetchData(
+        `${APIURL}/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
+        () => {},
+        "POST"
+      );
+    }
 
     fetchData(
       `${APIURL}/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
