@@ -4,35 +4,40 @@ import SearchResults from "./SearchResults";
 import { crud } from "../util/facade";
 
 function Search() {
-    // Master component for search page.
-    // controls state of search bar and search results
-    const [active, setActive] = useState("byName");
-    const [entity, setEntity] = useState("exercise");
-    const [results, setResults] = useState([]);
-    const [searchInput, setSearchInput] = useState("");
+  // Master component for search page.
+  // controls state of search bar and search results
+  const [active, setActive] = useState("byName");
+  const [entity, setEntity] = useState("exercise");
+  const [results, setResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
-//https://baseurl/search/muscle/byName?pattern=seachInput
-//https://baseurl/search/equipment/byMuscle?pattern=seachInput = biceps = pull up bar
+  //https://baseurl/search/muscle/byName?pattern=seachInput
+  //https://baseurl/search/equipment/byMuscle?pattern=seachInput = biceps = pull up bar
 
-    const API_URL = "http://127.0.0.1:7070/search";
-    const MOCK_URL = "http://127.0.0.1:3000/exercise";
+  const API_URL = "https://api-exam.oskardanielolsen.dk";
+  const MOCK_URL = "http://127.0.0.1:3000/exercise";
 
-    useEffect(() => {
-        // Update results when active changes
-        let url = `${API_URL}/${entity}/${active}?pattern=${searchInput}`; // remove comment to use API
-            if (searchInput === "") {
-            setResults([]);
-            return;
-        }
-        crud.fetchData(url, (data) => setResults(data), "GET");
-    }, [active, searchInput, entity]);
+  useEffect(() => {
+    // Update results when active changes
+    let url = `${API_URL}/${entity}/${active}?pattern=${searchInput}`; // remove comment to use API
+    if (searchInput === "") {
+      setResults([]);
+      return;
+    }
+    crud.fetchData(url, (data) => setResults(data), "GET");
+  }, [active, searchInput, entity]);
 
-    return ( 
-        <div className="container">
-            <SearchBar active={active} setEntity={setEntity} setActive={setActive} setSearchInput={setSearchInput}/>
-            <SearchResults results={results} entity={entity}/>
-        </div>
-     );
+  return (
+    <div className="container">
+      <SearchBar
+        active={active}
+        setEntity={setEntity}
+        setActive={setActive}
+        setSearchInput={setSearchInput}
+      />
+      <SearchResults results={results} entity={entity} />
+    </div>
+  );
 }
 
 export default Search;
