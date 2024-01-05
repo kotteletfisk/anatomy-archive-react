@@ -1,4 +1,4 @@
-const APIURL = "http://localhost:7070";
+const APIURL = "https://api.kotteletfisk.dk";
 // APIURL + EXERCISE
 const EXERCISEURL = `${APIURL}/exercise`;
 const AUTHENTICATION_ROUTE = "/auth/login";
