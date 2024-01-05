@@ -136,22 +136,21 @@ function createExercise(exercise) {
 
   function callback(data) {
     const newData = data;
-    console.log("yo this is new data", newData);
 
     fetchData(
-      `http://${APIURL}/exercise/muscle?exerciseId=${newData.id}&muscleId=${muscleIds}`,
+      `${APIURL}/exercise/muscle?exerciseId=${newData.id}&muscleId=${muscleIds}`,
       () => {},
       "POST"
     );
 
     fetchData(
-      `http://${APIURL}/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
+      `${APIURL}/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
       () => {},
       "POST"
     );
 
     fetchData(
-      `http://${APIURL}/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
+      `${APIURL}/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
       () => {},
       "POST"
     );
@@ -214,7 +213,6 @@ function editMuscle(muscle) {
 }
 
 function createMuscle(muscle) {
-  console.log(muscle);
   fetchData(
     // URL, callback, method, body
     `${APIURL}/muscle`,
@@ -237,7 +235,6 @@ function mutateMuscle(muscle) {
 function deleteMuscleById(muscleId) {
   // delete muscle from api      console.log(data);
       //console.log APIURL and equipmentId
-      console.log(`${APIURL}/equipment/${equipmentId}`);
   fetchData(`${APIURL}/muscle/${muscleId}`, () => {}, "DELETE");
 
   // delete from muscle array via setmuscles()
@@ -363,7 +360,7 @@ export const auth = {
 
 function getAllMuscles(callback) {
   fetchData(
-    `http://${APIURL}/search/muscle/bymuscle?pattern=`,
+    `${APIURL}/search/muscle/bymuscle?pattern=`,
     callback,
     "GET"
   );
@@ -371,7 +368,7 @@ function getAllMuscles(callback) {
 
 function getAllEquipment(callback) {
   fetchData(
-    `http://${APIURL}/search/equipment/byequipment?pattern=`,
+    `${APIURL}/search/equipment/byequipment?pattern=`,
     callback,
     "GET"
   );
@@ -379,7 +376,7 @@ function getAllEquipment(callback) {
 
 function getAllExerciseTypes(callback) {
   fetchData(
-    `http://${APIURL}/search/type/bytype?pattern=`,
+    `${APIURL}/search/type/bytype?pattern=`,
     callback,
     "GET"
   );
@@ -387,7 +384,7 @@ function getAllExerciseTypes(callback) {
 
 function getAllMusclegroups(callback) {
   fetchData(
-    `http://${APIURL}/search/musclegroup/bymusclegroup?pattern=`,
+    `${APIURL}/search/musclegroup/bymusclegroup?pattern=`,
     callback,
     "GET"
   );
