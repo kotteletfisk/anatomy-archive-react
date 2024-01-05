@@ -1,3 +1,9 @@
+
+const APIURL = "https://api.kotteletfisk.dk";
+// APIURL + EXERCISE
+const EXERCISEURL = `${APIURL}/exercise`;
+const AUTHENTICATION_ROUTE = "/auth/login";
+
 function fetchData(url, callback, method, body) {
   const headers = {
     Accept: "application/json",
@@ -24,12 +30,6 @@ function fetchData(url, callback, method, body) {
     .catch(handleHttpErrors);
 }
 
-const MOCK_URL = "http://localhost:3000";
-const APIURL = "http://localhost:7070";
-// APIURL + EXERCISE
-const EXERCISEURL = `${APIURL}/exercise`;
-const AUTHENTICATION_ROUTE = "/auth/login";
-const MUSCLEURL = `${APIURL}/muscle`;
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
@@ -139,19 +139,19 @@ function createExercise(exercise) {
     console.log("yo this is new data", newData);
 
     fetchData(
-      `http://localhost:7070/exercise/muscle?exerciseId=${newData.id}&muscleId=${muscleIds}`,
+      `http://${APIURL}/exercise/muscle?exerciseId=${newData.id}&muscleId=${muscleIds}`,
       () => {},
       "POST"
     );
 
     fetchData(
-      `http://localhost:7070/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
+      `http://${APIURL}/exercise/equipment?exerciseId=${newData.id}&equipmentId=${equipmentIds}`,
       () => {},
       "POST"
     );
 
     fetchData(
-      `http://localhost:7070/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
+      `http://${APIURL}/exercise/type?exerciseId=${newData.id}&typeId=${exercise.type}`,
       () => {},
       "POST"
     );
@@ -196,9 +196,6 @@ function getMuscleById(muscleId, callback) {
     `${APIURL}/muscle/${muscleId}`,
     // callback
     (data) => {
-      console.log(data);
-      //console.log APIURL and muscleId
-      console.log(`${APIURL}/muscle/${muscleId}`);
       callback(data); // Pass the data to the provided callback function
     },
     "GET"
@@ -238,7 +235,9 @@ function mutateMuscle(muscle) {
 }
 
 function deleteMuscleById(muscleId) {
-  // delete muscle from api
+  // delete muscle from api      console.log(data);
+      //console.log APIURL and equipmentId
+      console.log(`${APIURL}/equipment/${equipmentId}`);
   fetchData(`${APIURL}/muscle/${muscleId}`, () => {}, "DELETE");
 
   // delete from muscle array via setmuscles()
@@ -250,9 +249,6 @@ function getEquipmentById(equipmentId, callback) {
     `${APIURL}/equipment/${equipmentId}`,
     // callback
     (data) => {
-      console.log(data);
-      //console.log APIURL and equipmentId
-      console.log(`${APIURL}/equipment/${equipmentId}`);
       callback(data); // Pass the data to the provided callback function
     },
     "GET"
@@ -366,7 +362,7 @@ export const auth = {
 
 function getAllMuscles(callback) {
   fetchData(
-    `http://localhost:7070/search/muscle/bymuscle?pattern=`,
+    `http://${APIURL}/search/muscle/bymuscle?pattern=`,
     callback,
     "GET"
   );
@@ -374,7 +370,7 @@ function getAllMuscles(callback) {
 
 function getAllEquipment(callback) {
   fetchData(
-    `http://localhost:7070/search/equipment/byequipment?pattern=`,
+    `http://${APIURL}/search/equipment/byequipment?pattern=`,
     callback,
     "GET"
   );
@@ -382,7 +378,7 @@ function getAllEquipment(callback) {
 
 function getAllExerciseTypes(callback) {
   fetchData(
-    `http://localhost:7070/search/type/bytype?pattern=`,
+    `http://${APIURL}/search/type/bytype?pattern=`,
     callback,
     "GET"
   );
@@ -390,7 +386,7 @@ function getAllExerciseTypes(callback) {
 
 function getAllMusclegroups(callback) {
   fetchData(
-    `http://localhost:7070/search/musclegroup/bymusclegroup?pattern=`,
+    `http://${APIURL}/search/musclegroup/bymusclegroup?pattern=`,
     callback,
     "GET"
   );
