@@ -350,6 +350,7 @@ export const crud = {
   getAllExerciseTypes,
   getAllMuscles,
   getAllEquipment,
+  APIURL,
 };
 
 export const auth = {
