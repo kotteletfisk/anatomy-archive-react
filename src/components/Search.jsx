@@ -6,7 +6,7 @@ import { crud } from "../util/facade";
 function Search() {
     // Master component for search page.
     // controls state of search bar and search results
-    const [active, setActive] = useState("byName");
+    const [active, setActive] = useState("byexercise");
     const [entity, setEntity] = useState("exercise");
     const [results, setResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
