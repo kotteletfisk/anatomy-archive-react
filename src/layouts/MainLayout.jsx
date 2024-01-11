@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import { useContext, useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import AuthContext from "../components/AuthContext";
+import loginLock from "../assets/loginLock.png";
 
 function MainLayout() {
   const location = useLocation();
@@ -56,7 +57,7 @@ function MainLayout() {
           {isLoggedIn ? <NavLink to="/admin-page">Admin</NavLink> : null}
 
           <NavLink onClick={toggleModal}>
-            <img src="./src/assets/loginLock.png" width={20} height={20} />
+            <img src={loginLock} width={20} height={20} />
           </NavLink>
         </div>
       </div>
