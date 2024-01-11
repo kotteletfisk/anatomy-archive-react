@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { crud } from "../util/facade";
+import defaultImg from "../assets/default-mediapath.png";
 
 function DetailComponent() {
   const { id } = useParams();
@@ -8,9 +9,9 @@ function DetailComponent() {
 
   useEffect(() => {
     if (id > 0) {
-      crud.getExerciseById(id, (d) => setDetails(d));
+      crud.getExerciseById(id, setDetails);
     }
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -25,7 +26,7 @@ function DetailComponent() {
             {details.mediaPath ? (
               <img src={details.mediaPath} />
             ) : (
-              <img src="/src/assets/default-mediapath.png" alt="default png" />
+              <img src={defaultImg} alt="default png" />
             )}
           </div>
 
