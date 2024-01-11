@@ -45,7 +45,9 @@ function MainLayout() {
 
   return (
     <>
-      <h1 className="title" style={{ textAlign: "center" }}>Anatomy Archive</h1>
+      <h1 className="title" style={{ textAlign: "center" }}>
+        Anatomy Archive
+      </h1>
 
       <div id="nav-bar" ref={navbar}>
         <div id="nav-items">
@@ -54,7 +56,7 @@ function MainLayout() {
           {isLoggedIn ? <NavLink to="/admin-page">Admin</NavLink> : null}
 
           <NavLink onClick={toggleModal}>
-            <img src="/src/assets/loginLock.png" width={20} height={20} />
+            <img src="../assets/loginLock.png" width={20} height={20} />
           </NavLink>
         </div>
       </div>
