@@ -56,7 +56,7 @@ function MainLayout() {
           {isLoggedIn ? <NavLink to="/admin-page">Admin</NavLink> : null}
 
           <NavLink onClick={toggleModal}>
-            <img src="../assets/loginLock.png" width={20} height={20} />
+            <img src="./src/assets/loginLock.png" width={20} height={20} />
           </NavLink>
         </div>
       </div>
