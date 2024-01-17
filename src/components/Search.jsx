@@ -6,7 +6,7 @@ import { crud } from "../util/facade";
 function Search() {
     // Master component for search page.
     // controls state of search bar and search results
-    const [active, setActive] = useState("byName");
+    const [active, setActive] = useState("byexercise");
     const [entity, setEntity] = useState("exercise");
     const [results, setResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
@@ -14,8 +14,7 @@ function Search() {
 //https://baseurl/search/muscle/byName?pattern=seachInput
 //https://baseurl/search/equipment/byMuscle?pattern=seachInput = biceps = pull up bar
 
-    const API_URL = "http://127.0.0.1:7070/search";
-    const MOCK_URL = "http://127.0.0.1:3000/exercise";
+    const API_URL = `${crud.APIURL}/search`;
 
     useEffect(() => {
         // Update results when active changes

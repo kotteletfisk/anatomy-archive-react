@@ -12,6 +12,9 @@ function SearchResults({ results, entity }) {
     } else {
       setLoadDots("");
     }
+    return () => {
+      clearTimeout();
+    };
   }, [loadDots]);
 
   return (
