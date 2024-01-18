@@ -6,13 +6,15 @@ import {
 } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import ErrorPage from "./pages/ErrorPage";
-import Search from "./components/Search";
+import RelationSearch from "./components/RelationSearch";
 import LoginModal from "./components/LoginModal";
 import DetailComponent from "./pages/DetailComponent";
 import AdminPage from "./pages/AdminPage";
 import EditPage from "./pages/EditPage";
 import { useContext } from "react";
 import AuthContext from "./components/AuthContext";
+import MapSearch from "./components/SvgSearch/MapSearch";
+import Search from "./components/Search";
 
 function App() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -20,7 +22,10 @@ function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
-        <Route path="/search" element={<Search />} />
+        <Route path="/search/*" element={<Search />}>
+          <Route path="map" element={<MapSearch />} />
+          <Route path="relation" element={<RelationSearch />} />
+        </Route>
         <Route path="/login" element={<LoginModal />} />
 
         {isLoggedIn ? (

@@ -1,7 +1,7 @@
 
-function SvgComponent(props) {
+function SvgComponent({ handleClick }) {
   return (
-    <svg
+    <svg onClick={handleClick}
       x="0px"
       y="0px"
       width="100%"
@@ -10,7 +10,6 @@ function SvgComponent(props) {
       xmlSpace="preserve"
       id="svg2"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
       {/* <defs id="defs2">
         <linearGradient id="swatch1">

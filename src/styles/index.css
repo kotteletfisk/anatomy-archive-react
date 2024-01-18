@@ -120,6 +120,20 @@ th {
   margin: 10px;
 }
 
+.test {
+  border: #000000 3px solid;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+
+
 .card-container {
   /* display: flex;
   flex-direction: row;
