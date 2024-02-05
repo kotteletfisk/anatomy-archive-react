@@ -24,7 +24,6 @@ function LoginModal({ toggleModal }) {
       credentials.password,
       setIsLoggedIn,
     ).then(() => {
-        console.log("logged in");
         toggleModal();
     }).catch((err) => setError(err.message));
   }
