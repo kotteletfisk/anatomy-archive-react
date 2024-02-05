@@ -120,6 +120,19 @@ th {
   margin: 10px;
 }
 
+.container-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
 .test {
   border: #000000 3px solid;
 }
@@ -132,7 +145,20 @@ th {
   margin: 10px;
 }
 
+.map-container {
+  width: 600px;
+  max-width: 800px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--color-foreground);
+  transition: 0.3s;
+  padding: 3%;
+  border-radius: var(--border-radius);
+  margin: 0.5em;
 
+  @media screen and (max-width: 600px) {
+    width: 350px;
+  }
+}
 
 .card-container {
   /* display: flex;
