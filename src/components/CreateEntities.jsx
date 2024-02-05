@@ -6,15 +6,16 @@ import { crud } from "../util/facade";
 
 function CreateEntities() {
   const [form, setForm] = useState(null);
+  const [message, setMessage] = useState("no message");
 
   function handleSubmission(option, data) {
-    crud.mutateSomething(option, data);
+    crud.mutateSomething(option, data) && setMessage("Succesfully created") || setMessage("Creation failed");
   }
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Create Entities</h1>
-
+     
       <div className="card-container">
         <div
           className="card"
@@ -36,6 +37,7 @@ function CreateEntities() {
         </div>
       </div>
 
+      <p>{message}</p>
       {form && <div className="container-form card">{form}</div>}
     </>
   );
