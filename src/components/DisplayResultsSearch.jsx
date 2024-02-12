@@ -1,10 +1,6 @@
-import { useState } from "react";
-import DetailModal from "./DetailModal";
 import { Link } from "react-router-dom";
 
 function DisplayResultsSearch({ data, entity }) {
-
-  const url = `/exercises/`;
 
   return (
     <div>

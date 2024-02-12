@@ -25,7 +25,7 @@ function DetailComponent() {
             {details.mediaPath ? (
               <img src={details.mediaPath} />
             ) : (
-              <img src="/src/assets/default-mediapath.png" alt="default png" />
+              <img src="/default-mediapath.png" alt="default png" />
             )}
           </div>
 
