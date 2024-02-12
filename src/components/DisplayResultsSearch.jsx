@@ -1,39 +1,21 @@
 import { useState } from "react";
 import DetailModal from "./DetailModal";
+import { Link } from "react-router-dom";
 
 function DisplayResultsSearch({ data, entity }) {
-  const [showModal, setShowModal] = useState(false);
-  const [modalData, setModalData] = useState(null);
 
-  function handleClicked() {
-    if (showModal) {
-      setShowModal(false);
-    } else {
-      setShowModal(true);
-    }
-  }
+  const url = `/exercises/`;
 
   return (
     <div>
       {data.map((item) => (
         <div className="card" key={item.id}>
           <h3>{item.name}</h3>
-          <button
-            onClick={() => {
-              setModalData(item);
-              handleClicked();
-            }}
-          >
-            view
-          </button>
+          <Link to={`/${entity}/${item.id}`}>
+            <button>View</button>
+          </Link>
         </div>
       ))}
-
-      {showModal ? (
-        <div>
-          <DetailModal closeModal={handleClicked} data={modalData} entity={entity} />
-        </div>
-      ) : null}
     </div>
   );
 }
