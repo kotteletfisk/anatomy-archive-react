@@ -9,20 +9,27 @@ function MapSearch() {
   const [oldStyle, setOldStyle] = useState(null);
   const [results, setResults] = useState([]);
   const entity = "exercise";
+  const selectedColor = "red";
 
   function handleClick(e) {
     if (!e.target.id.includes("path") && !e.target.id.includes("outline")) {
-      if (selected !== null && selected !== e.target && oldStyle !== null) {
+      if (
+        selected !== null &&
+        selected.id != e.target.id &&
+        oldStyle !== null
+      ) {
         selected.style.fill = oldStyle;
       }
-      setOldStyle(e.target.style.fill);
+      if (e.target.style.fill != selectedColor) {
+        setOldStyle(e.target.style.fill);
+      }
       setSelected(e.target);
     }
   }
 
   useEffect(() => {
     if (selected !== null) {
-      selected.style.fill = "red";
+      selected.style.fill = selectedColor;
 
       const API_URL = `${crud.APIURL}/search`;
       const searchInput = selected.id;
