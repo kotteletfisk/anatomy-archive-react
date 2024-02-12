@@ -28,9 +28,9 @@ function DetailModal({ closeModal, data, entity }) {
 
         <div className="modal-footer">
           <Link to={url} onClick={closeModal}>
-            See More ?
+            See More?
           </Link>
-
+         |
         <Link to={editUrl} onClick={closeModal}> Edit </Link>
         </div>
       </div>

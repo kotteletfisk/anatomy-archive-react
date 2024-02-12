@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Search() {
   return (
     <div>
-      <h2>Search</h2>
+      <h1>Search</h1>
 
       <div className="row-container">
         <Link to="map">
