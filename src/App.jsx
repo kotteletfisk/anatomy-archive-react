@@ -32,7 +32,7 @@ function App() {
           <Route path="/admin-page" element={<AdminPage />} />
         ) : null}
 
-        <Route path="/exercises/:id" element={<DetailComponent />} />
+        <Route path="/exercise/:id" element={<DetailComponent />} />
         <Route path="/editPage/:entity/:id" element={<EditPage />} />
       </Route>
     )

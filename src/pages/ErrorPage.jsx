@@ -14,7 +14,7 @@ function ErrorPage() {
       <h1>Oops!</h1>
       <h3>Something went wrong</h3>
 
-      <img src="src/assets/awkward-kid.gif" alt="error" />
+      <img src="/awkward-kid.gif" alt="error" />
 
       <p>You must be smarter then us, this page has not been created yet.</p>
 
